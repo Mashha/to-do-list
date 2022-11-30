@@ -7,7 +7,24 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
-    <h3>i'm new</h3>
-    <p>are you working</p>
+    <h1>Today</h1>
+    <label for="button">Add task</label>
+    <input id="openTask" type="button" value="+">
+    <div class="container" class="module-open">
+        <form action="">
+            <span class="close-btn">X</span>
+            <input class="title-input" type="text" placeholder="Title">
+            <input class="details-input" type="text" placeholder="Details">
+            <div id="dateDiv">
+                <label for="date">Due date</label>
+                <input type="date" name="date" id="date-now">
+            </div>
+            <div class="priority">
+                <span>Priority</span>
+                <input type="radio">
+            </div>
+            <input type="button" value="Add task" id="add-task">
+        </form>
+    </div>
 </body>
 </html>
