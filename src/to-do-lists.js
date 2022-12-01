@@ -1,13 +1,13 @@
-export function toDoLists(list){
+export function toDoLists(name){
     const arrayForEachList = []
 
 
     return {
-        list,
+        name,
         arrayForEachList
     }
 }
-  
+
 
 
 

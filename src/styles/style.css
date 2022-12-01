@@ -5,3 +5,8 @@
 .open {
     display: block;
 }
+
+.list-element {
+    display: flex;
+    border: 1px solid black;
+}
