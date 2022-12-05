@@ -3,17 +3,17 @@ import {toDoList} from "./to-do-lists"
 // manage lists
 export function manageLists(){
     const storedLists = []
-    console.log(storedLists)
 
-    const addList = (name) => {
-        storedLists.push(toDoList(name))
+    const addList = (name, id) => {
+        storedLists.push(toDoList(name, id))
     }
 
+   
     return{
         addList
     }
 }
 
-const newList = manageLists()
-newList.addList("new list")
+ const newList = manageLists()
+ newList.addList("new list")
 console.log(newList)

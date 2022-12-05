@@ -1,7 +1,7 @@
 // to do's
-export function Todo(title, notes, dueDate, priority){
+export function Todo(title, notes, dueDate, priority, id = Date.now()){
     return {
-        title, notes, dueDate, priority
+        title, notes, dueDate, priority, id
     }
 }
 
