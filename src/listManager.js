@@ -1,19 +1,30 @@
-import {toDoList} from "./to-do-lists"
+import { toDoList } from "./to-do-lists";
 
 // manage lists
-export function manageLists(){
-    const storedLists = []
+export function manageLists() {
+  const storedLists = [];
 
-    const addList = (name, id) => {
-        storedLists.push(toDoList(name, id))
-    }
+  function getLists() {
+    return storedLists;
+  }
 
-   
-    return{
-        addList
-    }
+  const addList = (name, id) => {
+    storedLists.push(toDoList(name, id));
+  };
+
+  function getAList(id) {
+    const findAList = storedLists.find((list) => list.id === id);
+    return findAList;
+  }
+
+  return {
+    addList,
+    getLists,
+    getAList,
+  };
 }
 
- const newList = manageLists()
- newList.addList("new list")
-console.log(newList)
+const newList = manageLists();
+//newList.getLists()
+console.log(newList);
+newList.getAList();

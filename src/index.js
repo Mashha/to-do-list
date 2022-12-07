@@ -1,5 +1,4 @@
 import "./styles/style.css";
-import {manageLists} from "./listManager.js"
+import { manageLists } from "./listManager.js";
 
-
-console.log(manageLists())
+console.log(manageLists());
