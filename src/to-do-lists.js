@@ -9,6 +9,10 @@ export function toDoList(name, id = Date.now()) {
     toDoArray.push(Todo(title, notes, dueDate, priority, id));
   };
 
+  function removeTodo(todo){
+    toDoArray.splice(todo, 1)
+  }
+
   // default to do name
   addTodo("default", "default to do", "today", "high");
 
@@ -16,6 +20,7 @@ export function toDoList(name, id = Date.now()) {
     addTodo,
     name,
     id,
+    removeTodo,
   };
 }
 

@@ -13,14 +13,18 @@ export function manageLists() {
   };
 
   function getAList(id) {
-    const findAList = storedLists.find((list) => list.id === id);
-    return findAList;
+    return storedLists.find((list) => list.id === id);
+  }
+
+  function removeList(list) {
+    return storedLists.splice(list, 1)
   }
 
   return {
     addList,
     getLists,
     getAList,
+    removeList,
   };
 }
 
