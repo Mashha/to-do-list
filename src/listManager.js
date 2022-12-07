@@ -31,4 +31,4 @@ export function manageLists() {
 const newList = manageLists();
 //newList.getLists()
 console.log(newList);
-newList.getAList();
+newList.addList("default, id");
