@@ -12,13 +12,19 @@ export function addProjectToPage() {
 
   //add name of the project
   const addProject = document.querySelector("#form");
-  addProject.addEventListener("click", addProjectToUl);
+  addProject.addEventListener("submit", addProjectToUl);
 
   function addProjectToUl(e) {
     e.preventDefault();
 
     const projectName = document.querySelector(".project-name");
-    console.log(manageLists.addList(projectName.value));
+    manageLists.addList(`${projectName.value}`)
+    console.log(manageLists.addList)
+    const addProjectToDiv = document.querySelector(".project-container")
+    const listElement = document.createElement("li")
+    listElement.classList.add("list")
+    listElement.textContent = "projectName.value"
+    addProjectToDiv.append(listElement)
   }
 
   //close modal

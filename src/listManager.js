@@ -3,7 +3,7 @@ import { toDoList } from "./to-do-lists";
 // manage lists
 export const manageLists = (function() {
   const storedLists = [];
-
+console.log(storedLists)
   function getLists() {
     return storedLists;
   }
@@ -21,11 +21,14 @@ export const manageLists = (function() {
   }
 
   return {
+    storedLists,
     addList,
     getLists,
     getAList,
     removeList,
   };
 })()
+
+
 
 
