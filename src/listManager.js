@@ -1,7 +1,7 @@
 import { toDoList } from "./to-do-lists";
 
 // manage lists
-export function manageLists() {
+export const manageLists = (function() {
   const storedLists = [];
 
   function getLists() {
@@ -26,9 +26,6 @@ export function manageLists() {
     getAList,
     removeList,
   };
-}
+})()
 
-const newList = manageLists();
-//newList.getLists()
-console.log(newList);
-newList.addList("default, id");
+

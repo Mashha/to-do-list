@@ -1,3 +1,5 @@
+import { manageLists } from "./listManager";
+
 export function addProjectToPage() {
   //open modal
   const btnToOpenForm = document.querySelector(".btn-open-modal");
@@ -16,7 +18,7 @@ export function addProjectToPage() {
     e.preventDefault();
 
     const projectName = document.querySelector(".project-name");
-    console.log(projectName.value);
+    console.log(manageLists.addList(projectName.value));
   }
 
   //close modal
