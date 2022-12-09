@@ -33,12 +33,18 @@ export function addProjectToPage() {
   }
 
   // add project to page
-  function addProjectToDiv(projectValue) {
+  function addProjectToDiv(project) {
     const addProjectToDiv = document.querySelector(".project-container");
     const listElement = document.createElement("li");
     listElement.classList.add("list-item");
-    listElement.textContent = projectValue.name;
+    listElement.textContent = project.name;
+    listElement.id = project.id;
+    const deleteLi = document.createElement("button");
+    deleteLi.classList.add("remove-li");
+    deleteLi.textContent = "X";
+    listElement.append(deleteLi);
     addProjectToDiv.append(listElement);
+    console.log(manageLists.storedLists);
   }
 
   //close modal
