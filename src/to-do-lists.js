@@ -24,6 +24,6 @@ export function toDoList(name, id = Date.now()) {
   };
 }
 
-const newTodoList = toDoList("general");
-newTodoList.addTodo("new project", "new", "today", "also high");
-console.log(newTodoList);
+
+//newTodoList.addTodo("new project", "new", "today", "also high");
+
