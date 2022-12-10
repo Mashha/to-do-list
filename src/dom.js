@@ -32,7 +32,7 @@ export function addProjectToPage() {
     loopAndDisplay();
   }
 
-  // add project to page
+  // add project to div
   function addProjectToDiv(project) {
     const addProjectToDiv = document.querySelector(".project-container");
     const listElement = document.createElement("li");
@@ -44,7 +44,15 @@ export function addProjectToPage() {
     deleteLi.textContent = "X";
     listElement.append(deleteLi);
     addProjectToDiv.append(listElement);
-    console.log(manageLists.storedLists);
+    //}
+
+    //remove project from the page
+    deleteLi.addEventListener("click", function () {
+      let getAListWithID = manageLists.getAList(project.id);
+      let findIndex = manageLists.storedLists.indexOf(getAListWithID);
+      manageLists.removeList(findIndex);
+      loopAndDisplay();
+    });
   }
 
   //close modal
