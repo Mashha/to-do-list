@@ -7,6 +7,8 @@ export function addProjectToPage() {
 
   function openForm() {
     const divModal = document.querySelector(".form-modal");
+    // clean input before you open
+    cleanInput()
     divModal.classList.add("open");
   }
 
@@ -24,12 +26,19 @@ export function addProjectToPage() {
 
   //add project to array
   document.querySelector("#form").addEventListener("submit", addProjectToArray);
+
   function addProjectToArray(e) {
     e.preventDefault();
 
-    let formField = e.target[0].value;
+    //let formField = e.target[0].value;
+    if(e.target[0].value === ""){
+      alert("add project name")
+    } else {
+      let formField = e.target[0].value;
+      closeModalForm()
     manageLists.addList(`${formField}`);
     loopAndDisplay();
+    }
   }
 
   // add project to div
@@ -42,20 +51,52 @@ export function addProjectToPage() {
     const deleteLi = document.createElement("button");
     deleteLi.classList.add("remove-li");
     deleteLi.textContent = "X";
-    listElement.append(deleteLi);
+    const editLi = document.createElement("button");
+    editLi.classList.add("edit-project");
+    editLi.textContent = "edit";
+    listElement.append(editLi, deleteLi);
     addProjectToDiv.append(listElement);
-    //}
+    //closeModalForm();
+
+    // edit project
+    editLi.addEventListener("click", function () {
+      const divEditList = document.querySelector(".form-edit-project");
+      divEditList.classList.add("edit-form");
+      const projectNameInput = document.querySelector(".edited-project-name");
+      projectNameInput.value = project.name;
+    });
+
+    document.querySelector("#form-edit").addEventListener("submit", function(e){
+    e.preventDefault()
+    const newName = document.querySelector(".edited-project-name")
+    manageLists.editAList(project, newName.value)
+    closeEditedForm()
+    loopAndDisplay()
+    })
+    
+    //close edited form
+    document.querySelector(".close-edit-form").addEventListener("click", closeEditedForm)
+    function closeEditedForm(){
+      const divEditList = document.querySelector(".form-edit-project")
+      divEditList.classList.remove("edit-form")
+    }
 
     //remove project from the page
     deleteLi.addEventListener("click", function () {
-      let getAListWithID = manageLists.getAList(project.id);
-      let findIndex = manageLists.storedLists.indexOf(getAListWithID);
+      const getAListWithID = manageLists.getAList(project.id);
+      const findIndex = manageLists.storedLists.indexOf(getAListWithID);
       manageLists.removeList(findIndex);
       loopAndDisplay();
     });
-  }
 
-  //close modal
+  } 
+  //clean input field
+    function cleanInput(){
+      const inputField = document.querySelector(".project-name")
+      inputField.value = ""
+    }
+
+  //close modal form
   const closeModal = document.querySelector(".close-modal");
   closeModal.addEventListener("click", closeModalForm);
 

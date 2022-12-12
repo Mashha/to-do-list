@@ -1,8 +1,7 @@
 import { toDoList } from "./to-do-lists";
 
 // manage lists
-export const manageLists = (function() {
-
+export const manageLists = (function () {
   const storedLists = [];
 
   function getLists() {
@@ -14,22 +13,25 @@ export const manageLists = (function() {
   };
 
   function getAList(id) {
-    return storedLists.find((list) => list.id === id);
+    storedLists.find((list) => list.id === id);
+  }
+
+  function editAList(object, newName) {
+    object.name = newName;
   }
 
   function removeList(list) {
-    return storedLists.splice(list, 1)
+    storedLists.splice(list, 1);
   }
+
+  addList("general")
 
   return {
     storedLists,
     addList,
     getLists,
     getAList,
+    editAList,
     removeList,
   };
-})()
-
-
-
-
+})();
