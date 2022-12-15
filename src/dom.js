@@ -22,9 +22,12 @@ export function addProjectToPage() {
 
     for (let i = 0; i < manageLists.storedLists.length; i++) {
       addProjectToDiv(manageLists.storedLists[i]);
-      storeItems.getItem(manageLists.storedLists[i]);
+      // storeItems.setItem("project", manageLists.storedLists[i])
+      // storeItems.getItem("project");
     }
   }
+  //load default data
+  window.onload = loopAndDisplay;
 
   //add project to array
   document.querySelector("#form").addEventListener("submit", addProjectToArray);
