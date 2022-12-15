@@ -1,6 +1,6 @@
 import "./styles/style.css";
-import { manageLists } from "./listManager.js";
-import {addProjectToPage} from "./dom.js"
+import { listManager } from "./listManager.js";
+import { displayAllProjects } from "./dom.js";
 
-addProjectToPage()
-console.log(manageLists)
+displayAllProjects();
+console.log(listManager);

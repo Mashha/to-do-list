@@ -1,10 +1,10 @@
-export const storeItems = (function () {
-  const setItem = (name, list) => {
-    return window.localStorage.setItem(name, JSON.stringify(list));
+export const storedItems = (function () {
+  const setItem = (key, value) => {
+    return window.localStorage.setItem(key, JSON.stringify(value));
   };
 
-  const getItem = (list) => {
-    return JSON.parse(window.localStorage.getItem(list));
+  const getItem = (key) => {
+    return JSON.parse(window.localStorage.getItem(key));
   };
 
   return {

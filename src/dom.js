@@ -1,7 +1,7 @@
-import { manageLists } from "./listManager";
-import { storeItems } from "./storage";
+import { listManager } from "./listManager";
+//import { storedItems } from "./storage";
 
-export function addProjectToPage() {
+export function displayAllProjects() {
   //open modal
   const btnToOpenForm = document.querySelector(".btn-open-modal");
   btnToOpenForm.addEventListener("click", openForm);
@@ -14,25 +14,23 @@ export function addProjectToPage() {
   }
 
   //loop over the array
-  function loopAndDisplay() {
+  function loopOverTheArrayAndDisplayProjects() {
     const projectItems = document.querySelectorAll(".list-item");
     projectItems.forEach((item) => {
       item.remove();
     });
 
-    for (let i = 0; i < manageLists.storedLists.length; i++) {
-      addProjectToDiv(manageLists.storedLists[i]);
-      // storeItems.setItem("project", manageLists.storedLists[i])
-      // storeItems.getItem("project");
+    for (let i = 0; i < listManager.storedLists.length; i++) {
+      displaySingleProject(listManager.storedLists[i]);
     }
   }
   //load default data
-  window.onload = loopAndDisplay;
+  window.onload = loopOverTheArrayAndDisplayProjects;
 
   //add project to array
-  document.querySelector("#form").addEventListener("submit", addProjectToArray);
+  document.querySelector("#form").addEventListener("submit", submitProject);
 
-  function addProjectToArray(e) {
+  function submitProject(e) {
     e.preventDefault();
 
     if (e.target[0].value === "") {
@@ -40,14 +38,13 @@ export function addProjectToPage() {
     } else {
       let formField = e.target[0].value;
       closeModalForm();
-      manageLists.addList(`${formField}`);
-      loopAndDisplay();
+      listManager.addList(`${formField}`);
+      loopOverTheArrayAndDisplayProjects();
     }
   }
 
-  // add project to div
-  function addProjectToDiv(project) {
-    const addProjectToDiv = document.querySelector(".project-container");
+  function displaySingleProject(project) {
+    const projectContainer = document.querySelector(".project-container");
     const listElement = document.createElement("li");
     listElement.classList.add("list-item");
     listElement.textContent = project.name;
@@ -59,7 +56,7 @@ export function addProjectToPage() {
     editLi.classList.add("edit-project");
     editLi.textContent = "edit";
     listElement.append(editLi, deleteLi);
-    addProjectToDiv.append(listElement);
+    projectContainer.append(listElement);
 
     // edit project
     editLi.addEventListener("click", function () {
@@ -74,9 +71,9 @@ export function addProjectToPage() {
       .addEventListener("submit", function (e) {
         e.preventDefault();
         const newName = document.querySelector(".edited-project-name");
-        manageLists.editAList(project, newName.value);
+        listManager.editAList(project, newName.value);
         closeEditedForm();
-        loopAndDisplay();
+        loopOverTheArrayAndDisplayProjects();
       });
 
     //close edited form
@@ -90,10 +87,10 @@ export function addProjectToPage() {
 
     //remove project from the page
     deleteLi.addEventListener("click", function () {
-      const getAListWithID = manageLists.getAList(project.id);
-      const findIndex = manageLists.storedLists.indexOf(getAListWithID);
-      manageLists.removeList(findIndex);
-      loopAndDisplay();
+      const getAListWithID = listManager.getAList(project.id);
+      const findIndex = listManager.storedLists.indexOf(getAListWithID);
+      listManager.removeList(findIndex);
+      loopOverTheArrayAndDisplayProjects();
     });
   }
   //clean input field

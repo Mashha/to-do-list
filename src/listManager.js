@@ -1,8 +1,9 @@
 import { toDoList } from "./to-do-lists";
+import { storedItems } from "./storage";
 
 // manage lists
-export const manageLists = (function () {
-  const storedLists = [];
+export const listManager = (function () {
+  const storedLists = storedItems.getItem("storedLists") || [];
 
   function getLists() {
     return storedLists;
@@ -10,6 +11,7 @@ export const manageLists = (function () {
 
   const addList = (name, id) => {
     storedLists.push(toDoList(name, id));
+    save();
   };
 
   function getAList(id) {
@@ -18,13 +20,19 @@ export const manageLists = (function () {
 
   function editAList(object, newName) {
     object.name = newName;
+    save();
   }
 
   function removeList(list) {
     storedLists.splice(list, 1);
+    save();
   }
 
-  addList("general")
+  const save = () => {
+    storedItems.setItem("storedLists", storedLists);
+  };
+
+  addList("general");
 
   return {
     storedLists,
