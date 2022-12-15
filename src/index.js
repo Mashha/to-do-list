@@ -1,6 +1,6 @@
 import "./styles/style.css";
 import { listManager } from "./listManager.js";
-import { displayAllProjects } from "./dom.js";
+import { displayPage } from "./dom.js";
 
-displayAllProjects();
+displayPage();
 console.log(listManager);

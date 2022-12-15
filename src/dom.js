@@ -1,7 +1,7 @@
 import { listManager } from "./listManager";
 //import { storedItems } from "./storage";
 
-export function displayAllProjects() {
+export function displayPage() {
   //open modal
   const btnToOpenForm = document.querySelector(".btn-open-modal");
   btnToOpenForm.addEventListener("click", openForm);
@@ -14,7 +14,7 @@ export function displayAllProjects() {
   }
 
   //loop over the array
-  function loopOverTheArrayAndDisplayProjects() {
+  function displayAllProjects() {
     const projectItems = document.querySelectorAll(".list-item");
     projectItems.forEach((item) => {
       item.remove();
@@ -24,8 +24,6 @@ export function displayAllProjects() {
       displaySingleProject(listManager.storedLists[i]);
     }
   }
-  //load default data
-  window.onload = loopOverTheArrayAndDisplayProjects;
 
   //add project to array
   document.querySelector("#form").addEventListener("submit", submitProject);
@@ -39,7 +37,7 @@ export function displayAllProjects() {
       let formField = e.target[0].value;
       closeModalForm();
       listManager.addList(`${formField}`);
-      loopOverTheArrayAndDisplayProjects();
+      displayAllProjects();
     }
   }
 
@@ -73,7 +71,7 @@ export function displayAllProjects() {
         const newName = document.querySelector(".edited-project-name");
         listManager.editAList(project, newName.value);
         closeEditedForm();
-        loopOverTheArrayAndDisplayProjects();
+        displayAllProjects();
       });
 
     //close edited form
@@ -90,7 +88,7 @@ export function displayAllProjects() {
       const getAListWithID = listManager.getAList(project.id);
       const findIndex = listManager.storedLists.indexOf(getAListWithID);
       listManager.removeList(findIndex);
-      loopOverTheArrayAndDisplayProjects();
+      displayAllProjects();
     });
   }
   //clean input field
