@@ -1,4 +1,5 @@
 import { listManager } from "./listManager";
+import { storedItems } from "./storage";
 //import { storedItems } from "./storage";
 
 export function displayPage() {
@@ -56,7 +57,9 @@ export function displayPage() {
     const editLi = document.createElement("button");
     editLi.classList.add("edit-project");
     editLi.textContent = "edit";
-    listElement.append(editLi, deleteLi);
+    if (project.name !== "general") {
+      listElement.append(editLi, deleteLi);
+    }
     projectContainer.append(listElement);
 
     // edit project
