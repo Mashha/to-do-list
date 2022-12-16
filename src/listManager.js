@@ -32,7 +32,9 @@ export const listManager = (function () {
     storedItems.setItem("storedLists", storedLists);
   };
 
-  addList("general");
+  if (localStorage.length === 0) {
+    addList("general");
+  }
 
   return {
     storedLists,
@@ -43,3 +45,9 @@ export const listManager = (function () {
     removeList,
   };
 })();
+
+// if (storedLists.filter((e) => e.name === "general").length > 0) {
+//   console.log("")
+// } else {
+//   addList("general");
+// }
