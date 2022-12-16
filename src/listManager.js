@@ -46,8 +46,3 @@ export const listManager = (function () {
   };
 })();
 
-// if (storedLists.filter((e) => e.name === "general").length > 0) {
-//   console.log("")
-// } else {
-//   addList("general");
-// }

@@ -13,6 +13,9 @@ export function displayPage() {
     divModal.classList.add("open");
   }
 
+  //loop over and display projects when page loads
+  window.onload = displayAllProjects;
+
   //loop over the array
   function displayAllProjects() {
     const projectItems = document.querySelectorAll(".list-item");
