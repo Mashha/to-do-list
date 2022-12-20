@@ -18,6 +18,24 @@
     display: none;
 }
 
+.list-item {
+    cursor: pointer;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.taskForm {
+    display: none;
+}
+
+.open-task-form{
+    display: block;
+}
+
 /* * {
     margin: 0;
     padding: 0;

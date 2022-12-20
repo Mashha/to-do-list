@@ -1,7 +1,7 @@
 import { Todo } from "./to-do.js";
 
 // list for todo's
-export function toDoList(name, id = Date.now()) {
+export const toDoList = (function(name, id = Date.now()) {
   const toDoArray = [];
 
   //add to do to array
@@ -17,11 +17,11 @@ export function toDoList(name, id = Date.now()) {
   addTodo("default", "default to do", "today", "high");
 
   return {
-    addTodo,
-    name,
+    name, 
     id,
+    toDoArray,
+    addTodo,
     removeTodo,
   };
-}
+})()
 
-//newTodoList.addTodo("new project", "new", "today", "also high");

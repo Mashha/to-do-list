@@ -1,4 +1,5 @@
 import { listManager } from "./listManager";
+import { toDoList } from "./to-do-lists";
 
 export function displayPage() {
   //open modal
@@ -45,20 +46,23 @@ export function displayPage() {
 
   function displaySingleProject(project) {
     const projectContainer = document.querySelector(".project-container");
-    const listElement = document.createElement("li");
+    const listElement = document.createElement("div");
     listElement.classList.add("list-item");
-    listElement.textContent = project.name;
+    const projectName = document.createElement("span");
+    projectName.textContent = project.name;
     listElement.id = project.id;
     const deleteLi = document.createElement("button");
     deleteLi.classList.add("remove-li");
     deleteLi.textContent = "X";
     const editLi = document.createElement("button");
     editLi.classList.add("edit-project");
-    editLi.id = "edit-item";
     editLi.textContent = "edit";
     if (project.name !== "general") {
-      listElement.append(editLi, deleteLi);
+      listElement.append(projectName, editLi, deleteLi);
+    } else {
+      listElement.append(projectName);
     }
+
     projectContainer.append(listElement);
 
     // edit project
@@ -119,5 +123,24 @@ export function displayPage() {
   function closeModalForm() {
     const divModalClose = document.querySelector(".form-modal");
     divModalClose.classList.remove("open");
+  }
+}
+
+export function addTask() {
+  //open task form
+  document.querySelector(".add-task").addEventListener("click", openModal);
+
+  function openModal() {
+    const divTask = document.querySelector(".taskForm");
+    divTask.classList.add("open-task-form");
+  }
+
+  document
+    .querySelector(".close-task-form")
+    .addEventListener("click", closeModal);
+
+  function closeModal() {
+    const divTask = document.querySelector(".taskForm");
+    divTask.classList.remove("open-task-form");
   }
 }
