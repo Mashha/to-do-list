@@ -32,7 +32,7 @@ export const listManager = (function () {
     storedItems.setItem("storedLists", storedLists);
   };
 
-  if (localStorage.length === 0) {
+  if (storedLists.length === 0) {
     addList("general");
   }
 

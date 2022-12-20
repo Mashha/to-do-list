@@ -1,6 +1,4 @@
 import { listManager } from "./listManager";
-import { storedItems } from "./storage";
-//import { storedItems } from "./storage";
 
 export function displayPage() {
   //open modal
@@ -65,29 +63,10 @@ export function displayPage() {
     // edit project
     editLi.addEventListener("click", function () {
       const divEditList = document.querySelector(".form-edit-project");
-      divEditList.classList.add("edit-form");
+      divEditList.classList.add("open-form");
       const projectNameInput = document.querySelector(".edited-project-name");
       projectNameInput.value = project.name;
     });
-
-    document
-      .querySelector("#form-edit")
-      .addEventListener("submit", function (e) {
-        e.preventDefault();
-        const newName = document.querySelector(".edited-project-name");
-        listManager.editAList(project, newName.value);
-        closeEditedForm();
-        displayAllProjects();
-      });
-
-    //close edited form
-    document
-      .querySelector(".close-edit-form")
-      .addEventListener("click", closeEditedForm);
-    function closeEditedForm() {
-      const divEditList = document.querySelector(".form-edit-project");
-      divEditList.classList.remove("edit-form");
-    }
 
     //remove project from the page
     deleteLi.addEventListener("click", function () {
@@ -97,6 +76,33 @@ export function displayPage() {
       displayAllProjects();
     });
   }
+
+  //add changes to array
+  const formEdit = document.querySelector("#form-edit");
+  formEdit.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const newName = document.querySelector(".edited-project-name");
+    const listElementId = document.querySelector(".list-item");
+
+    listManager.storedLists.forEach(function (project) {
+      if (project.id === listElementId.id) {
+        listManager.editAList(project, newName.value);
+      }
+    });
+
+    closeEditedForm();
+    displayAllProjects();
+  });
+
+   //close edited form
+   document
+   .querySelector(".close-edit-form")
+   .addEventListener("click", closeEditedForm);
+ function closeEditedForm() {
+   const divEditList = document.querySelector(".form-edit-project");
+   divEditList.classList.remove("open-form");
+ }
+
   //clean input field
   function cleanInput() {
     const inputField = document.querySelector(".project-name");
