@@ -1,5 +1,5 @@
 import { listManager } from "./listManager";
-import { toDoList } from "./to-do-lists";
+import { toDoList, task } from "./to-do-lists";
 
 export function displayPage() {
   //open modal
@@ -135,6 +135,7 @@ export function addTask() {
     divTask.classList.add("open-task-form");
   }
 
+  // close task form
   document
     .querySelector(".close-task-form")
     .addEventListener("click", closeModal);
@@ -142,5 +143,50 @@ export function addTask() {
   function closeModal() {
     const divTask = document.querySelector(".taskForm");
     divTask.classList.remove("open-task-form");
+  }
+
+  document
+    .querySelector("#formForTasks")
+    .addEventListener("submit", addTaskToArray);
+
+  function addTaskToArray(e) {
+    e.preventDefault();
+    const title = e.target[0].value;
+    const notes = e.target[1].value;
+    const date = e.target[2].value;
+    task.addTodo(title, notes, date);
+    closeModal();
+    displayAllTasks();
+  }
+
+  // loop over the array
+  function displayAllTasks() {
+    for (let i = 0; i < task.toDoArray.length; i++) {
+      console.log(task.toDoArray);
+      displaySingleTask(task.toDoArray[i]);
+    }
+  }
+
+  //display tasks
+  function displaySingleTask(singleTask) {
+    const tasksUl = document.querySelector(".tasks");
+    const taskElement = document.createElement("li");
+    taskElement.classList.add("task-element");
+    const taskCheck = document.createElement("input");
+    taskCheck.type = "radio";
+    const taskDetails = document.createElement("div");
+    taskDetails.classList.add("task-details");
+    const taskName = document.createElement("div");
+    taskName.textContent = singleTask.title;
+    const taskNotes = document.createElement("div");
+    taskNotes.textContent = singleTask.notes;
+    const dueDate = document.createElement("div");
+    dueDate.classList.add("due-date");
+    dueDate.textContent = singleTask.date;
+
+    taskDetails.append(taskName, taskNotes);
+    taskElement.append(taskCheck, taskDetails, dueDate);
+
+    tasksUl.append(taskElement);
   }
 }

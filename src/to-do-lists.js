@@ -5,19 +5,16 @@ export function toDoList(name, id = Date.now()) {
   const toDoArray = [];
 
   //add to do to array
-  const addTodo = (title, notes, dueDate, priority, id) => {
-    toDoArray.push(Todo(title, notes, dueDate, priority, id));
+  const addTodo = (title, notes, date, priority, id) => {
+    toDoArray.push(Todo(title, notes, date, priority, id));
   };
 
   function removeTodo(todo) {
     toDoArray.splice(todo, 1);
   }
 
-  // default to do name
-  addTodo("default", "default to do", "today", "high");
-
   return {
-    name, 
+    name,
     id,
     toDoArray,
     addTodo,
@@ -25,4 +22,4 @@ export function toDoList(name, id = Date.now()) {
   };
 }
 
-
+export const task = toDoList();
