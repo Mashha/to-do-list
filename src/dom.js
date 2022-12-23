@@ -162,7 +162,7 @@ export function addTask() {
   // loop over the array
   function displayAllTasks() {
     for (let i = 0; i < task.toDoArray.length; i++) {
-      console.log(task.toDoArray);
+      console.log(task);
       displaySingleTask(task.toDoArray[i]);
     }
   }
