@@ -24,6 +24,7 @@ export function displayPage() {
     });
 
     for (let i = 0; i < listManager.storedLists.length; i++) {
+      console.log(listManager.storedLists[i])
       displaySingleProject(listManager.storedLists[i]);
     }
   }
@@ -124,6 +125,12 @@ export function displayPage() {
     const divModalClose = document.querySelector(".form-modal");
     divModalClose.classList.remove("open");
   }
+
+  document.querySelector(".project-container").addEventListener("click", clickOnProjects)
+  function clickOnProjects(e){
+    e.target.parentElement.setAttribute("data-selected-project", e.target.textContent)
+  }
+
 }
 
 export function addTask() {
@@ -151,6 +158,9 @@ export function addTask() {
 
   function addTaskToArray(e) {
     e.preventDefault();
+    const clickedProject = document.querySelector("[data-selected-project]")
+    const findProject = listManager.getAList(parseInt(clickedProject.id))
+    console.log(findProject)
     const title = e.target[0].value;
     const notes = e.target[1].value;
     const date = e.target[2].value;
@@ -162,7 +172,6 @@ export function addTask() {
   // loop over the array
   function displayAllTasks() {
     for (let i = 0; i < task.toDoArray.length; i++) {
-      console.log(task);
       displaySingleTask(task.toDoArray[i]);
     }
   }
@@ -171,6 +180,7 @@ export function addTask() {
   function displaySingleTask(singleTask) {
     const tasksUl = document.querySelector(".tasks");
     const taskElement = document.createElement("li");
+    taskElement.id = singleTask.id
     taskElement.classList.add("task-element");
     const taskCheck = document.createElement("input");
     taskCheck.type = "radio";

@@ -15,7 +15,7 @@ export const listManager = (function () {
   };
 
   function getAList(id) {
-    storedLists.find((list) => list.id === id);
+    return storedLists.find((list) => list.id === id);
   }
 
   function editAList(object, newName) {
