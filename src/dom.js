@@ -161,13 +161,16 @@ export function addTask() {
 
   function addTaskToArray(e) {
     e.preventDefault();
-    const clickedProject = document.querySelector("[data-selected-project]");
-    const findProject = listManager.getAList(parseInt(clickedProject.id));
-
     const title = e.target[0].value;
     const notes = e.target[1].value;
     const date = e.target[2].value;
-    findProject.addTodo(title, notes, date);
+    const clickedProject = document.querySelector("[data-selected-project]");
+    if (clickedProject === null) {
+      listManager.storedLists[0].addTodo(title, notes, date);
+    } else {
+      const findProject = listManager.getAList(parseInt(clickedProject.id));
+      findProject.addTodo(title, notes, date);
+    }
     closeModal();
     displayAllTasks();
   }
