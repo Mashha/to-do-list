@@ -3,7 +3,21 @@ import { storedItems } from "./storage";
 
 // manage lists
 export const listManager = (function () {
-  const storedLists = storedItems.getItem("storedLists") || [];
+  const storedLists = [];
+
+  // function recreateStoredList() {
+  //   const parsedJson = storedItems.getItem("storedLists") || [];
+
+  //   if (parsedJson.length === 0) {
+  //     return;
+  //   } else {
+  //     for (let i = 0; i < parsedJson.length; i++) {
+  //       const recreatedTodo = toDoList(parsedJson[i].name, parsedJson[i].id);
+  //       console.log(recreatedTodo)
+  //      
+  //     }
+  //   }
+  // }
 
   function getLists() {
     return storedLists;

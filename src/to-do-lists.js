@@ -15,8 +15,6 @@ export function toDoList(name, id = Date.now()) {
     toDoArray.splice(todo, 1);
   }
 
-
-
   return {
     name,
     id,
@@ -25,5 +23,3 @@ export function toDoList(name, id = Date.now()) {
     removeTodo,
   };
 }
-
-export const task = toDoList();

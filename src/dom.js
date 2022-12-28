@@ -1,5 +1,5 @@
 import { listManager } from "./listManager";
-import { toDoList, task } from "./to-do-lists";
+import { toDoList } from "./to-do-lists";
 
 export function displayPage() {
   //open modal
@@ -24,7 +24,6 @@ export function displayPage() {
     });
 
     for (let i = 0; i < listManager.storedLists.length; i++) {
-      console.log(listManager.storedLists[i])
       displaySingleProject(listManager.storedLists[i]);
     }
   }
@@ -126,11 +125,15 @@ export function displayPage() {
     divModalClose.classList.remove("open");
   }
 
-  document.querySelector(".project-container").addEventListener("click", clickOnProjects)
-  function clickOnProjects(e){
-    e.target.parentElement.setAttribute("data-selected-project", e.target.textContent)
+  document
+    .querySelector(".project-container")
+    .addEventListener("click", clickOnProjects);
+  function clickOnProjects(e) {
+    e.target.parentElement.setAttribute(
+      "data-selected-project",
+      e.target.textContent
+    );
   }
-
 }
 
 export function addTask() {
@@ -158,29 +161,35 @@ export function addTask() {
 
   function addTaskToArray(e) {
     e.preventDefault();
-    const clickedProject = document.querySelector("[data-selected-project]")
-    const findProject = listManager.getAList(parseInt(clickedProject.id))
-    console.log(findProject)
+    const clickedProject = document.querySelector("[data-selected-project]");
+    const findProject = listManager.getAList(parseInt(clickedProject.id));
+
     const title = e.target[0].value;
     const notes = e.target[1].value;
     const date = e.target[2].value;
-    task.addTodo(title, notes, date);
+    findProject.addTodo(title, notes, date);
     closeModal();
     displayAllTasks();
   }
 
   // loop over the array
   function displayAllTasks() {
-    for (let i = 0; i < task.toDoArray.length; i++) {
-      displaySingleTask(task.toDoArray[i]);
-    }
+    const taskElements = document.querySelectorAll(".task-element");
+    taskElements.forEach((li) => {
+      li.remove();
+    });
+    listManager.storedLists.forEach(function (project) {
+      project.toDoArray.forEach(function (task) {
+        displaySingleTask(task);
+      });
+    });
   }
 
   //display tasks
   function displaySingleTask(singleTask) {
     const tasksUl = document.querySelector(".tasks");
     const taskElement = document.createElement("li");
-    taskElement.id = singleTask.id
+    taskElement.id = singleTask.id;
     taskElement.classList.add("task-element");
     const taskCheck = document.createElement("input");
     taskCheck.type = "radio";
