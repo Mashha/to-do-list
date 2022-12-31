@@ -1,12 +1,12 @@
 import { listManager } from "./listManager";
-import { toDoList } from "./to-do-lists";
+//import { toDoList } from "./to-do-lists";
 
 export function displayPage() {
   //open modal
   const btnToOpenForm = document.querySelector(".btn-open-modal");
-  btnToOpenForm.addEventListener("click", openForm);
+  btnToOpenForm.addEventListener("click", openProjectForm);
 
-  function openForm() {
+  function openProjectForm() {
     const divModal = document.querySelector(".form-modal");
     // clean input before you open
     cleanInput();
@@ -133,14 +133,28 @@ export function displayPage() {
       "data-selected-project",
       e.target.textContent
     );
+
+    const clickedProjectId = e.target.parentElement.id;
+    const findProjectWithId = listManager.getAList(parseInt(clickedProjectId));
+
+    const addTitle = document.querySelector(".title-project");
+    addTitle.textContent = findProjectWithId.name;
+    const taskElements = document.querySelectorAll(".task-element");
+    taskElements.forEach((li) => {
+      li.remove();
+    });
+
+    findProjectWithId.toDoArray.forEach(function (todo) {
+      displaySingleTask(todo);
+    });
   }
-}
 
-export function addTask() {
+  // tasks
+
   //open task form
-  document.querySelector(".add-task").addEventListener("click", openModal);
+  document.querySelector(".add-task").addEventListener("click", openTaskModal);
 
-  function openModal() {
+  function openTaskModal() {
     const divTask = document.querySelector(".taskForm");
     divTask.classList.add("open-task-form");
   }
@@ -148,9 +162,9 @@ export function addTask() {
   // close task form
   document
     .querySelector(".close-task-form")
-    .addEventListener("click", closeModal);
+    .addEventListener("click", closeTaskModal);
 
-  function closeModal() {
+  function closeTaskModal() {
     const divTask = document.querySelector(".taskForm");
     divTask.classList.remove("open-task-form");
   }
@@ -171,7 +185,7 @@ export function addTask() {
       const findProject = listManager.getAList(parseInt(clickedProject.id));
       findProject.addTodo(title, notes, date);
     }
-    closeModal();
+    closeTaskModal();
     displayAllTasks();
   }
 

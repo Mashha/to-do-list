@@ -1,5 +1,5 @@
-import { listManager } from "./listManager.js";
-import { storedItems } from "./storage.js";
+//import { listManager } from "./listManager.js";
+//import { storedItems } from "./storage.js";
 import { Todo } from "./to-do.js";
 
 // list for todo's
