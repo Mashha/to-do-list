@@ -181,9 +181,11 @@ export function displayPage() {
     const clickedProject = document.querySelector("[data-selected-project]");
     if (clickedProject === null) {
       listManager.storedLists[0].addTodo(title, notes, date);
+      listManager.save();
     } else {
       const findProject = listManager.getAList(parseInt(clickedProject.id));
       findProject.addTodo(title, notes, date);
+      listManager.save();
     }
     closeTaskModal();
     displayAllTasks();
@@ -195,10 +197,14 @@ export function displayPage() {
     taskElements.forEach((li) => {
       li.remove();
     });
+
+    const projectName = document.querySelector(".title-project");
     listManager.storedLists.forEach(function (project) {
-      project.toDoArray.forEach(function (task) {
-        displaySingleTask(task);
-      });
+      if (projectName.textContent === project.name) {
+        project.toDoArray.forEach(function (task) {
+          displaySingleTask(task);
+        });
+      }
     });
   }
 

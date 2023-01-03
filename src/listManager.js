@@ -4,24 +4,28 @@ import { storedItems } from "./storage";
 // manage lists
 export const listManager = (function () {
   const storedLists = recreateStoredList() || [];
-
+  console.log(storedLists);
   function recreateStoredList() {
     const parsedJson = storedItems.getItem("storedLists") || [];
-    console.log(parsedJson);
     if (parsedJson.length === 0) {
       return;
     } else {
+      const recreatedTodoArray = [];
       for (let i = 0; i < parsedJson.length; i++) {
-        const recreatedTodo = toDoList(
-          parsedJson[i].name,
-          parsedJson[i].id,
-          parsedJson[i].toDoArray,
-          parsedJson[i].addTodo,
-          parsedJson[i].removeTodo
-        );
-        console.log(recreatedTodo);
-        return parsedJson;
+        const recreatedTodo = toDoList(parsedJson[i].name, parsedJson[i].id);
+        recreatedTodoArray.push(recreatedTodo);
+       
+        const tasksArray = recreatedTodo.toDoArray;
+        for (let j = 0; j < tasksArray.length; j++) {
+            recreatedTodo.addTodo(tasksArray[j].title, tasksArray[j].notes,
+            tasksArray[j].date,
+            tasksArray[j].priority,
+            tasksArray[j].id
+          );
+           
+        }
       }
+      return recreatedTodoArray;
     }
   }
 
@@ -63,5 +67,6 @@ export const listManager = (function () {
     getAList,
     editAList,
     removeList,
+    save,
   };
 })();
