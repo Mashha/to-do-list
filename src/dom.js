@@ -1,7 +1,12 @@
 import { listManager } from "./listManager";
-//import { toDoList } from "./to-do-lists";
 
 export function displayPage() {
+  //loop over and display projects and tasks when page loads
+  window.onload = function () {
+    displayAllProjects();
+    displayAllTasks();
+  };
+
   //open modal
   const btnToOpenForm = document.querySelector(".btn-open-modal");
   btnToOpenForm.addEventListener("click", openProjectForm);
@@ -12,9 +17,6 @@ export function displayPage() {
     cleanInput();
     divModal.classList.add("open");
   }
-
-  //loop over and display projects when page loads
-  window.onload = displayAllProjects;
 
   //loop over the array
   function displayAllProjects() {
@@ -150,7 +152,6 @@ export function displayPage() {
   }
 
   // tasks
-
   //open task form
   document.querySelector(".add-task").addEventListener("click", openTaskModal);
 

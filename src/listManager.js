@@ -14,15 +14,16 @@ export const listManager = (function () {
       for (let i = 0; i < parsedJson.length; i++) {
         const recreatedTodo = toDoList(parsedJson[i].name, parsedJson[i].id);
         recreatedTodoArray.push(recreatedTodo);
-       
-        const tasksArray = recreatedTodo.toDoArray;
+        const tasksArray = parsedJson[i].toDoArray;
+
         for (let j = 0; j < tasksArray.length; j++) {
-            recreatedTodo.addTodo(tasksArray[j].title, tasksArray[j].notes,
+          recreatedTodo.addTodo(
+            tasksArray[j].title,
+            tasksArray[j].notes,
             tasksArray[j].date,
             tasksArray[j].priority,
             tasksArray[j].id
           );
-           
         }
       }
       return recreatedTodoArray;
