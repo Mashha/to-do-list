@@ -239,9 +239,9 @@ export function displayPage() {
 
     taskDetails.append(taskName, taskNotes);
     taskElement.append(taskCheck, taskDetails, dueDate, removeTask);
-
     tasksUl.append(taskElement);
 
+    // remove tasks
     removeTask.addEventListener("click", function () {
       const titleProject = document.querySelector(".title-project");
       listManager.storedLists.forEach(function (project) {
@@ -255,5 +255,19 @@ export function displayPage() {
         }
       });
     });
+
+    // edit tasks
+    taskElement.addEventListener("click", function () {
+      const editTaskForm = document.querySelector(".edit-task-modal");
+      editTaskForm.classList.add("open");
+    });
   }
+
+  //close edit form
+  document
+    .querySelector("#close-edit-task")
+    .addEventListener("click", function () {
+      const editTaskForm = document.querySelector(".edit-task-modal");
+      editTaskForm.classList.remove("open");
+    });
 }

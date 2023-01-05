@@ -26,6 +26,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: baseline;
+    height: 100vh;
 }
 
 .taskForm {
@@ -38,6 +39,7 @@ main {
 
 .task-element {
     display: flex;
+    border: 1px solid black;
 }
 
 .task-details {
@@ -47,6 +49,26 @@ main {
 
 .container {
     width: 50%;
+}
+
+.edit-task-modal {
+    display: none;
+}
+
+.edit-task-modal.open {
+    display: block;
+}
+
+.edit-task-modal form {
+   width: 400px;
+   height: 200px; 
+   z-index: 4;
+   background-color: aqua;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   
 }
 
 /* * {
