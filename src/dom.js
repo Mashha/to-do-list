@@ -226,7 +226,12 @@ export function displayPage() {
     taskNotes.textContent = singleTask.notes;
     const dueDate = document.createElement("div");
     dueDate.classList.add("due-date");
-    dueDate.textContent = singleTask.date;
+    if(singleTask.date === ""){
+      dueDate.textContent = "No date"
+    } else {
+      dueDate.textContent = singleTask.date;
+    }
+    
 
     taskDetails.append(taskName, taskNotes);
     taskElement.append(taskCheck, taskDetails, dueDate);
