@@ -226,16 +226,34 @@ export function displayPage() {
     taskNotes.textContent = singleTask.notes;
     const dueDate = document.createElement("div");
     dueDate.classList.add("due-date");
-    if(singleTask.date === ""){
-      dueDate.textContent = "No date"
+    if (singleTask.date === "") {
+      dueDate.textContent = "No date";
     } else {
       dueDate.textContent = singleTask.date;
     }
-    
+
+    const removeTask = document.createElement("button");
+    removeTask.classList.add("remove-task");
+    removeTask.id = singleTask.id;
+    removeTask.textContent = "X";
 
     taskDetails.append(taskName, taskNotes);
-    taskElement.append(taskCheck, taskDetails, dueDate);
+    taskElement.append(taskCheck, taskDetails, dueDate, removeTask);
 
     tasksUl.append(taskElement);
+
+    removeTask.addEventListener("click", function () {
+      const titleProject = document.querySelector(".title-project");
+      listManager.storedLists.forEach(function (project) {
+        if (project.name === titleProject.textContent) {
+          const task = project.findTodo(parseInt(removeTask.id));
+          //find the index of that task, to remove the right one
+          const findTaskIndex = project.toDoArray.indexOf(task);
+          project.removeTodo(findTaskIndex);
+          listManager.save();
+          displayAllTasks();
+        }
+      });
+    });
   }
 }

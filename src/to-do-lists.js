@@ -9,6 +9,10 @@ export function toDoList(name, id = Date.now()) {
     toDoArray.push(Todo(title, notes, date, priority, id));
   };
 
+  function findTodo(id) {
+  return toDoArray.find((task)=> task.id === id)
+  }
+
   function removeTodo(todo) {
     toDoArray.splice(todo, 1);
   }
@@ -18,6 +22,7 @@ export function toDoList(name, id = Date.now()) {
     id,
     toDoArray,
     addTodo,
+    findTodo,
     removeTodo,
   };
 }
