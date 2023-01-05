@@ -92,7 +92,8 @@ export function displayPage() {
     e.preventDefault();
     const newName = document.querySelector(".edited-project-name");
     const editButtonId = document.querySelector("#list-id");
-
+    const changeTitle = document.querySelector(".title-project");
+    changeTitle.textContent = newName.value;
     listManager.storedLists.forEach(function (project) {
       if (project.id === parseInt(editButtonId.value)) {
         listManager.editAList(project, newName.value);
