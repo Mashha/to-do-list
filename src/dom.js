@@ -55,7 +55,7 @@ export function displayPage() {
     listElement.id = project.id;
     const deleteLi = document.createElement("button");
     deleteLi.classList.add("remove-li");
-    deleteLi.textContent = "X";
+    deleteLi.innerHTML = '<i class="fa-regular fa-trash-can"></i>';
     const editLi = document.createElement("button");
     editLi.classList.add("edit-project");
     editLi.textContent = "edit";
@@ -163,7 +163,7 @@ export function displayPage() {
 
   // close task form
   document
-    .querySelector(".close-task-form")
+    .querySelector("#close-task")
     .addEventListener("click", closeTaskModal);
 
   function closeTaskModal() {
@@ -235,7 +235,7 @@ export function displayPage() {
     const removeTask = document.createElement("button");
     removeTask.classList.add("remove-task");
     removeTask.id = singleTask.id;
-    removeTask.textContent = "X";
+    removeTask.innerHTML = '<i class="fa-regular fa-trash-can"></i>';
 
     taskDetails.append(taskName, taskNotes);
     taskElement.append(taskCheck, taskDetails, dueDate, removeTask);
@@ -260,14 +260,45 @@ export function displayPage() {
     taskElement.addEventListener("click", function () {
       const editTaskForm = document.querySelector(".edit-task-modal");
       editTaskForm.classList.add("open");
+      const taskTitle = document.querySelector("#task-new-title");
+      taskTitle.value = singleTask.title;
+      const taskNotes = document.querySelector("#task-notes");
+      taskNotes.value = singleTask.notes;
+      const taskDate = document.querySelector("#task-new-date");
+      taskDate.value = singleTask.date;
+      const taskId = document.querySelector("#task-id");
+      taskId.value = singleTask.id;
     });
   }
+
+  //add task changes to array
+  document.querySelector("#edit-task").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const taskTitle = document.querySelector("#task-new-title").value;
+    const taskNotes = document.querySelector("#task-notes").value;
+    const taskDate = document.querySelector("#task-new-date").value;
+    const taskId = document.querySelector("#task-id");
+    const titleProject = document.querySelector(".title-project");
+    listManager.storedLists.forEach(function (project) {
+      if (project.name === titleProject.textContent) {
+        project.toDoArray.forEach(function (task) {
+          if (task.id === parseInt(taskId.value)) {
+            project.editTodo(task, taskTitle, taskNotes, taskDate);
+            displayAllTasks();
+            listManager.save();
+            closeEditForm();
+          }
+        });
+      }
+    });
+  });
 
   //close edit form
   document
     .querySelector("#close-edit-task")
-    .addEventListener("click", function () {
-      const editTaskForm = document.querySelector(".edit-task-modal");
-      editTaskForm.classList.remove("open");
-    });
+    .addEventListener("click", closeEditForm);
+  function closeEditForm() {
+    const editTaskForm = document.querySelector(".edit-task-modal");
+    editTaskForm.classList.remove("open");
+  }
 }

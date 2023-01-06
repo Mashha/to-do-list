@@ -1,74 +1,190 @@
-
-.form-modal {
-    display: none;
-}
-.open {
-    display: block;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.form-edit-project {
-    display: none;
+body {
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
 }
 
-.open-form {
-    display: block;
+header {
+  grid-column: 1/-1;
+  text-align: center;
+  border-bottom: 2px solid black;
 }
 
-.hidden {
-    display: none;
+aside {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  border-right: 2px solid black;
 }
 
-.list-item {
-    cursor: pointer;
+.projects {
+  font-size: 25px;
 }
 
 main {
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-    height: 100vh;
-}
-
-.taskForm {
-    display: none;
-}
-
-.open-task-form{
-    display: block;
-}
-
-.task-element {
-    display: flex;
-    border: 1px solid black;
-}
-
-.task-details {
-    display: flex;
-    flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  height: 100vh;
 }
 
 .container {
-    width: 50%;
+  width: 60%;
+  margin: auto;
+  height: 60%;
+  background-color: wheat;
+  border-radius: 10px;
 }
 
-.edit-task-modal {
-    display: none;
+.container-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 20px;
+  padding: 15px;
+  height: inherit;
 }
 
-.edit-task-modal.open {
-    display: block;
+#tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#btn-close {
+  display: none;
+}
+
+#title-project {
+  font-size: 24px;
+}
+
+.task-element {
+  display: flex;
+  padding: 5px;
+  background-color: tan;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.task-details {
+  display: flex;
+  padding-left: 15px;
+  flex: 1;
+}
+
+.remove-task {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.due-date {
+  padding-right: 15px;
+}
+
+.modal {
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
 }
 
 .edit-task-modal form {
-   width: 400px;
-   height: 200px; 
-   z-index: 4;
-   background-color: aqua;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   
+  width: 450px;
+  height: auto;
+  z-index: 4;
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  display: flex;
+  border-radius: 10px;
+  flex-direction: column;
+  padding: 10px;
+  gap: 5px;
+}
+
+#close-edit-task {
+  align-self: flex-end;
+  background: transparent;
+  border: none;
+}
+
+#close-edit-task i {
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.edit-project {
+  cursor: pointer;
+}
+
+.remove-li {
+  cursor: pointer;
+}
+
+.btn-open-modal {
+  cursor: pointer;
+}
+
+.add-task {
+  cursor: pointer;
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+}
+
+#form.buttons {
+  display: flex;
+}
+
+/* js */
+.form-modal {
+  display: none;
+}
+.open {
+  display: block;
+}
+
+.form-edit-project {
+  display: none;
+}
+
+.open-form {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.list-item {
+  cursor: pointer;
+}
+
+.taskForm {
+  display: none;
+}
+
+.open-task-form {
+  display: block;
+}
+
+.edit-task-modal {
+  display: none;
+}
+
+.edit-task-modal.open {
+  display: block;
 }
 
 /* * {
@@ -112,4 +228,3 @@ main {
     display: flex;
     border: 1px solid black;
 } */
-
