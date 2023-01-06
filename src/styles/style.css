@@ -30,6 +30,10 @@ aside {
   font-size: 25px;
 }
 
+.today {
+    cursor: pointer;
+}
+
 main {
   display: flex;
   justify-content: center;
