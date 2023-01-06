@@ -303,32 +303,48 @@ export function displayPage() {
   }
 
   //get date
-  const currentDate = new Date().toJSON().slice(0, 10)
-   //remove list elements 
-   function removeLi(){
-   const taskElements = document.querySelectorAll(".task-element");
-          taskElements.forEach((li) => {
-            li.remove();
-          });
-        }
+  const currentDate = new Date().toJSON().slice(0, 10);
+  //remove list elements
+  function removeLi() {
+    const taskElements = document.querySelectorAll(".task-element");
+    taskElements.forEach((li) => {
+      li.remove();
+    });
+  }
 
   //display today's tasks
-  const todaysTasks = document.querySelector("#tasks-for-today")
-  todaysTasks.addEventListener("click", function(){
-    removeLi()
-    const projectName = document.querySelector(".title-project")
-    projectName.textContent = "Today"
+  const todaysTasks = document.querySelector("#tasks-for-today");
+  todaysTasks.addEventListener("click", function () {
+    removeLi();
+    const projectName = document.querySelector(".title-project");
+    projectName.textContent = "Today";
     const taskElements = document.querySelectorAll(".task-element");
-          taskElements.forEach((li) => {
-            li.remove();
-          });
-    listManager.storedLists.forEach(function(project){
-      project.toDoArray.forEach(function(task){
-        if(currentDate === task.date) {
-          displaySingleTask(task)
+    taskElements.forEach((li) => {
+      li.remove();
+    });
+    listManager.storedLists.forEach(function (project) {
+      project.toDoArray.forEach(function (task) {
+        if (currentDate === task.date) {
+          displaySingleTask(task);
         }
-      })
-    })
-  })
+      });
+    });
+  });
 
+  //display all tasks
+  const allTasks = document.querySelector("#list-of-all-tasks");
+  allTasks.addEventListener("click", function () {
+    removeLi();
+    const projectName = document.querySelector(".title-project");
+    projectName.textContent = "All tasks";
+    const taskElements = document.querySelectorAll(".task-element");
+    taskElements.forEach((li) => {
+      li.remove();
+    });
+    listManager.storedLists.forEach(function (project) {
+      project.toDoArray.forEach(function (task) {
+        displaySingleTask(task);
+      });
+    });
+  });
 }
