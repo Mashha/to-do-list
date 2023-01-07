@@ -158,11 +158,11 @@ main {
   border: 1px solid rgba(0, 0, 0, 0.258);
   border-radius: 10px;
   cursor: pointer;
+  gap: 10px;
 }
 
 .task-details {
   display: flex;
-  padding-left: 15px;
   flex: 1;
 }
 
@@ -172,8 +172,8 @@ main {
   cursor: pointer;
 }
 
-.due-date {
-  padding-right: 15px;
+.star-yellow {
+    color: orange;
 }
 
 .modal {

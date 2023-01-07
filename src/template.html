@@ -28,7 +28,7 @@
       <div id="list-of-all-tasks" class="all-tasks">
         <span><i class="fa-solid fa-list-check"></i></span>All tasks
       </div>
-      <div class="important">
+      <div id="list-of-important-tasks" class="important">
         <span><i class="fa-regular fa-star"></i></span>Important
       </div>
       <div class="projects">
@@ -77,6 +77,8 @@
               <input type="text" name="notes" />
               <label for="date">Date</label>
               <input type="date" id="task-date" />
+              <label for="priority">Important</label>
+              <input type="checkbox" />
               <button type="submit">Add</button>
               <button type="button" id="close-task">Close</button>
             </form>
@@ -96,6 +98,8 @@
           <input type="text" name="notes" id="task-notes" />
           <label for="date">Date</label>
           <input type="date" id="task-new-date" />
+          <label for="priority">Important</label>
+          <input type="checkbox" id="new-priority">
           <button type="submit">Add changes</button>
         </form>
       </div>

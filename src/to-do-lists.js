@@ -13,8 +13,8 @@ export function toDoList(name, id = Date.now()) {
   return toDoArray.find((task)=> task.id === id)
   }
 
-  function editTodo(object, newTitle, newNotes, newDate){
-    object.title = newTitle, object.notes = newNotes, object.date = newDate
+  function editTodo(object, newTitle, newNotes, newDate, newPriority){
+    object.title = newTitle, object.notes = newNotes, object.date = newDate, object.priority = newPriority
   }
 
   function removeTodo(todo) {
