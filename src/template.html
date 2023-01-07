@@ -12,17 +12,30 @@
   </head>
   <body>
     <header id="header">
-      <h1>To do list</h1>
-      <div class="day-message">Good day</div>
-      <div>date</div>
+      <h1><span class="title">To do list</span></h1>
+      <div class="message">
+        <span class="day-message"></span> today is
+        <span class="date-today"></span>
+      </div>
     </header>
     <aside>
-      <div id="tasks-for-today" class="today">Today</div>
-      <div id="tasks-of-this-week" class="week-tasks">Week</div>
-      <div id="list-of-all-tasks" class="all-tasks">All tasks</div>
-      <div class="projects">Projects</div>
+      <div id="tasks-for-today" class="today">
+        <span><i class="fa-regular fa-sun"></i></span>Today
+      </div>
+      <div id="tasks-of-this-week" class="week-tasks">
+        <span><i class="fa-solid fa-calendar-week"></i></span>Week
+      </div>
+      <div id="list-of-all-tasks" class="all-tasks">
+        <span><i class="fa-solid fa-list-check"></i></span>All tasks
+      </div>
+      <div class="important">
+        <span><i class="fa-regular fa-star"></i></span>Important
+      </div>
+      <div class="projects">
+        Projects
+        <button class="btn-open-modal"><i class="fa-solid fa-plus"></i></button>
+      </div>
       <div class="project-container"></div>
-      <button class="btn-open-modal">Add project</button>
 
       <div class="form-modal">
         <form action="" id="form">
@@ -46,6 +59,10 @@
     <main>
       <div class="container">
         <div class="container-inner">
+          <div class="tape-left-top tape"></div>
+          <div class="tape-right-top tape"></div>
+          <div class="tape-left-bottom tape"></div>
+          <div class="tape-right-bottom tape"></div>
           <div class="title-project" id="title-project">general</div>
           <div class="tasks-container">
             <ul class="tasks" id="tasks"></ul>

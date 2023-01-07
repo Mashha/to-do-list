@@ -50,6 +50,8 @@ export function displayPage() {
     const projectContainer = document.querySelector(".project-container");
     const listElement = document.createElement("div");
     listElement.classList.add("list-item");
+    const icon = document.createElement("span");
+    icon.innerHTML = '<i class="fa-regular fa-folder"></i>';
     const projectName = document.createElement("span");
     projectName.textContent = project.name;
     listElement.id = project.id;
@@ -60,9 +62,9 @@ export function displayPage() {
     editLi.classList.add("edit-project");
     editLi.textContent = "edit";
     if (project.name !== "general") {
-      listElement.append(projectName, editLi, deleteLi);
+      listElement.append(icon, projectName, editLi, deleteLi);
     } else {
-      listElement.append(projectName);
+      listElement.append(icon, projectName);
     }
 
     projectContainer.append(listElement);
@@ -303,18 +305,47 @@ export function displayPage() {
   }
 
   //type part of the day
-  const today = new Date()
-  const hours = today.getHours()
-  const message = document.querySelector(".day-message")
-  
-  if(hours < 12) {
-    message.textContent = "Good morning"
+  const today = new Date();
+  const hours = today.getHours();
+  const message = document.querySelector(".day-message");
+
+  if (hours < 12) {
+    message.textContent = "Good morning";
   } else if (hours < 18) {
-    message.textContent = "Good afternoon"
+    message.textContent = "Good afternoon";
   } else {
-    message.textContent = "Good evening"
+    message.textContent = "Good evening";
   }
 
+  // date in word
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const wordDay = days[new Date().getDay()];
+  const numberDay = today.getDay();
+  const month = months[new Date().getMonth()];
+  const dateToday = document.querySelector(".date-today");
+  dateToday.textContent = `${wordDay} ${numberDay} of ${month}`;
   //get date
   const currentDate = new Date().toJSON().slice(0, 10);
   //remove list elements
@@ -362,8 +393,8 @@ export function displayPage() {
   });
 
   // display tasks of this coming week
-  const tasksOfTheWeek = document.querySelector("#tasks-of-this-week")
-  tasksOfTheWeek.addEventListener("click", function(){
-    console.log("click")
-  })
+  const tasksOfTheWeek = document.querySelector("#tasks-of-this-week");
+  tasksOfTheWeek.addEventListener("click", function () {
+    console.log("click");
+  });
 }

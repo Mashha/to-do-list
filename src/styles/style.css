@@ -1,7 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Aclonica&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mukta:wght@200;300&display=swap");
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+:root {
+  --first-color: #37a194;
+  --second-color: #7713b4;
+  --third-color: #e6c7dd;
+  --fourth-color: #cff1f1;
 }
 
 body {
@@ -9,37 +19,44 @@ body {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 4fr;
+  font-family: "mukta", sans-serif;
+  background-color: rgb(246, 246, 246);
 }
 
 header {
   grid-column: 1/-1;
   text-align: center;
-  border-bottom: 2px solid black;
+}
+
+.message {
+  font-size: 20px;
+}
+
+.day-message {
+  font-weight: 600;
 }
 
 aside {
-  padding: 10px;
+  padding: 12px 40px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 15px;
-  border-right: 2px solid black;
+  width: 300px;
 }
 
 .projects {
   font-size: 25px;
 }
 
-.today {
-    cursor: pointer;
-}
-
-.all-tasks {
-    cursor: pointer;
-}
-
+.today,
+.important,
+.all-tasks,
 .week-tasks {
-    cursor: pointer;
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  font-size: 18px;
 }
 
 main {
@@ -47,14 +64,18 @@ main {
   justify-content: center;
   align-items: baseline;
   height: 100vh;
+
+  position: relative;
 }
 
 .container {
-  width: 60%;
+  width: 80%;
   margin: auto;
   height: 60%;
-  background-color: wheat;
+  background-color: white;
   border-radius: 10px;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .container-inner {
@@ -62,8 +83,7 @@ main {
   flex-direction: column;
   justify-content: space-evenly;
   gap: 20px;
-  padding: 15px;
-  height: inherit;
+  padding: 20px;
 }
 
 #tasks {
@@ -79,13 +99,63 @@ main {
 #title-project {
   font-size: 24px;
   text-transform: capitalize;
+  text-align: center;
+  font-family: "aclonica" sans-serif;
 }
 
+.title {
+  position: relative;
+  font-family: "aclonica" sans-serif;
+}
+
+.title:after {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 130px;
+  height: 15px;
+  background-color: #e6c7dd;
+  z-index: -1;
+}
+
+.tape {
+  background-image: url("../images/tape.png");
+  background-position: center;
+  background-size: cover;
+  width: 150px;
+  height: 40px;
+  position: absolute;
+}
+
+.tape-left-top {
+  transform: rotate(-45deg);
+  top: 0;
+  left: -45px;
+}
+
+.tape-left-bottom {
+  bottom: 0;
+  transform: rotate(45deg);
+  left: -45px;
+}
+
+.tape-right-bottom {
+  bottom: 0;
+  right: -45px;
+  transform: rotate(-45deg);
+}
+
+.tape-right-top {
+  transform: rotate(45deg);
+  right: -45px;
+  top: 0;
+}
 
 .task-element {
   display: flex;
   padding: 5px;
-  background-color: tan;
+  border: 1px solid rgba(0, 0, 0, 0.258);
   border-radius: 10px;
   cursor: pointer;
 }
@@ -125,6 +195,15 @@ main {
   gap: 5px;
 }
 
+.modal {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  right: 0;
+}
+
 #close-edit-task {
   align-self: flex-end;
   background: transparent;
@@ -142,10 +221,15 @@ main {
 
 .remove-li {
   cursor: pointer;
+  border: none;
+  background: transparent;
 }
 
 .btn-open-modal {
   cursor: pointer;
+  background: transparent;
+  border: none;
+  font-size: 22px;
 }
 
 .add-task {
@@ -183,6 +267,10 @@ main {
 
 .list-item {
   cursor: pointer;
+  display: flex;
+  gap: 10px;
+  font-size: 18px;
+  text-transform: capitalize;
 }
 
 .taskForm {
@@ -198,5 +286,5 @@ main {
 }
 
 .edit-task-modal.open {
-  display: block;
+  display: flex;
 }
