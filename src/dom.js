@@ -302,6 +302,19 @@ export function displayPage() {
     editTaskForm.classList.remove("open");
   }
 
+  //type part of the day
+  const today = new Date()
+  const hours = today.getHours()
+  const message = document.querySelector(".day-message")
+  
+  if(hours < 12) {
+    message.textContent = "Good morning"
+  } else if (hours < 18) {
+    message.textContent = "Good afternoon"
+  } else {
+    message.textContent = "Good evening"
+  }
+
   //get date
   const currentDate = new Date().toJSON().slice(0, 10);
   //remove list elements
@@ -347,4 +360,10 @@ export function displayPage() {
       });
     });
   });
+
+  // display tasks of this coming week
+  const tasksOfTheWeek = document.querySelector("#tasks-of-this-week")
+  tasksOfTheWeek.addEventListener("click", function(){
+    console.log("click")
+  })
 }
