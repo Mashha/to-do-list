@@ -221,7 +221,7 @@ export function displayPage() {
     taskElement.id = singleTask.id;
     taskElement.classList.add("task-element");
     const taskCheck = document.createElement("input");
-    taskCheck.type = "radio";
+    taskCheck.type = "checkbox";
     const taskDetails = document.createElement("div");
     taskDetails.classList.add("task-details");
     const taskName = document.createElement("div");
@@ -286,6 +286,7 @@ export function displayPage() {
       console.log(taskPriority);
     });
 
+    //priority
     importance.addEventListener("click", function () {
       console.log(singleTask.priority);
       if (singleTask.priority === true) {
@@ -295,6 +296,17 @@ export function displayPage() {
       }
       displayAllTasks();
     });
+
+    //check if done
+    console.log(taskCheck.checked)
+    taskCheck.addEventListener("change", function(){
+       if(taskCheck.checked === true){
+      taskName.style.textDecoration = "line-through"
+    } else {
+      taskName.style.textDecoration = "none"
+    }
+    })
+   
   }
 
   //add task changes to array
@@ -374,7 +386,7 @@ export function displayPage() {
     "December",
   ];
   const wordDay = days[new Date().getDay()];
-  const numberDay = today.getDay();
+  const numberDay = today.getDate();
   const month = months[new Date().getMonth()];
   const dateToday = document.querySelector(".date-today");
   dateToday.textContent = `${wordDay} ${numberDay} of ${month}`;

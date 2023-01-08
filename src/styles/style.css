@@ -15,12 +15,13 @@
 }
 
 body {
-  height: 100vh;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 4fr;
   font-family: "mukta", sans-serif;
   background-color: rgb(246, 246, 246);
+  background-image: url("../images/Untitled\ design\(4\).png");
+  background-size: cover;
 }
 
 header {
@@ -63,15 +64,14 @@ main {
   display: flex;
   justify-content: center;
   align-items: baseline;
-  height: 100vh;
-
+  min-height: 90vh;
   position: relative;
 }
 
 .container {
   width: 80%;
   margin: auto;
-  height: 60%;
+  min-height: 60vh;
   background-color: white;
   border-radius: 10px;
   position: relative;
@@ -100,22 +100,22 @@ main {
   font-size: 24px;
   text-transform: capitalize;
   text-align: center;
-  font-family: "aclonica" sans-serif;
+  font-family: "Aclonica", sans-serif;
 }
 
 .title {
   position: relative;
-  font-family: "aclonica" sans-serif;
+  font-family: "Aclonica", sans-serif;
 }
 
 .title:after {
   content: "";
   position: absolute;
-  bottom: 10px;
+  bottom: 6px;
   left: 0;
-  width: 130px;
+  width: 170px;
   height: 15px;
-  background-color: #e6c7dd;
+  background-color: #a7d9da;
   z-index: -1;
 }
 
