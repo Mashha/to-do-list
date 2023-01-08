@@ -85,6 +85,7 @@ export function displayPage() {
       const findIndex = listManager.storedLists.indexOf(getAListWithID);
       listManager.removeList(findIndex);
       displayAllProjects();
+      todaysTasks();
     });
   }
 
@@ -298,15 +299,13 @@ export function displayPage() {
     });
 
     //check if done
-    console.log(taskCheck.checked)
-    taskCheck.addEventListener("change", function(){
-       if(taskCheck.checked === true){
-      taskName.style.textDecoration = "line-through"
-    } else {
-      taskName.style.textDecoration = "none"
-    }
-    })
-   
+    taskCheck.addEventListener("change", function () {
+      if (taskCheck.checked === true) {
+        taskName.style.textDecoration = "line-through";
+      } else {
+        taskName.style.textDecoration = "none";
+      }
+    });
   }
 
   //add task changes to array
@@ -316,7 +315,7 @@ export function displayPage() {
     const taskNotes = document.querySelector("#task-notes").value;
     const taskDate = document.querySelector("#task-new-date").value;
     const taskPriority = document.querySelector("#new-priority").checked;
-    
+
     const taskId = document.querySelector("#task-id");
     const titleProject = document.querySelector(".title-project");
     listManager.storedLists.forEach(function (project) {
@@ -401,8 +400,10 @@ export function displayPage() {
   }
 
   //display today's tasks
-  const todaysTasks = document.querySelector("#tasks-for-today");
-  todaysTasks.addEventListener("click", function () {
+  document
+    .querySelector("#tasks-for-today")
+    .addEventListener("click", todaysTasks);
+  function todaysTasks() {
     removeLi();
     const projectName = document.querySelector(".title-project");
     projectName.textContent = "Today";
@@ -417,7 +418,7 @@ export function displayPage() {
         }
       });
     });
-  });
+  }
 
   //display all tasks
   const allTasks = document.querySelector("#list-of-all-tasks");
