@@ -386,9 +386,11 @@ export function displayPage() {
   ];
   const wordDay = days[new Date().getDay()];
   const numberDay = today.getDate();
-  const month = months[new Date().getMonth()];
-  const dateToday = document.querySelector(".date-today");
-  dateToday.textContent = `${wordDay} ${numberDay} of ${month}`;
+  //const month = months[new Date().getMonth()];
+  const dateToday = document.querySelector("#day-word");
+  dateToday.textContent = `${wordDay}`;
+  const numberOfToday = document.querySelector("#day-number");
+  numberOfToday.textContent = `${numberDay}`;
   //get date
   const currentDate = new Date().toJSON().slice(0, 10);
   //remove list elements

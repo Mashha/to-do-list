@@ -13,30 +13,46 @@
   <body>
     <header id="header">
       <h1><span class="title">To do list</span></h1>
-      <div class="message">
-        <span class="day-message"></span> today is
-        <span class="date-today"></span>
+      <div class="image-logo">
+        <img src="./images/logo.png" alt="" />
       </div>
     </header>
     <aside>
-      <div id="tasks-for-today" class="today">
-        <span><i class="fa-regular fa-sun"></i></span>Today
+      <div class="top">
+        <div class="message">
+          <span id="day-word"></span>
+          <span id="day-number"></span>
+          <span class="day-message"></span>
+        </div>
+        <div class="image"></div>
       </div>
-      <div id="tasks-of-this-week" class="week-tasks">
-        <span><i class="fa-solid fa-calendar-week"></i></span>Week
+      <div class="bottom">
+        <div class="home">
+          <span>Home</span> <i class="fa-solid fa-house"></i>
+        </div>
+        <div class="home-inner">
+          <div id="tasks-for-today" class="today">
+            <span><i class="fa-regular fa-sun"></i></span>Today
+          </div>
+          <div id="tasks-of-this-week" class="week-tasks">
+            <span><i class="fa-solid fa-calendar-week"></i></span>Week
+          </div>
+          <div id="list-of-all-tasks" class="all-tasks">
+            <span><i class="fa-solid fa-list-check"></i></span>All tasks
+          </div>
+          <div id="list-of-important-tasks" class="important">
+            <span><i class="fa-regular fa-star"></i></span>Important
+          </div>
+        </div>
+        <div class="projects">
+          <span>Projects</span>
+          <i class="fa-solid fa-folder-open"></i>
+        </div>
+        <div class="project-container"></div>
+        <div class="btn-open-modal">
+          <span>Add project</span><i class="fa-solid fa-folder-plus"></i>
+        </div>
       </div>
-      <div id="list-of-all-tasks" class="all-tasks">
-        <span><i class="fa-solid fa-list-check"></i></span>All tasks
-      </div>
-      <div id="list-of-important-tasks" class="important">
-        <span><i class="fa-regular fa-star"></i></span>Important
-      </div>
-      <div class="projects">
-        Projects
-        <button class="btn-open-modal"><i class="fa-solid fa-plus"></i></button>
-      </div>
-      <div class="project-container"></div>
-
       <div class="form-modal">
         <form action="" id="form">
           <input class="project-name" type="text" />
@@ -59,15 +75,13 @@
     <main>
       <div class="container">
         <div class="container-inner">
-          <div class="tape-left-top tape"></div>
-          <div class="tape-right-top tape"></div>
-          <div class="tape-left-bottom tape"></div>
-          <div class="tape-right-bottom tape"></div>
           <div class="title-project" id="title-project">general</div>
           <div class="tasks-container">
             <ul class="tasks" id="tasks"></ul>
           </div>
-          <button class="add-task">Add task</button>
+          <div class="add-task">
+            Add task<i class="fa-solid fa-square-plus"></i>
+          </div>
           <button class="close-task-form" id="btn-close">Close</button>
           <div class="taskForm">
             <form action="" id="formForTasks">
@@ -99,10 +113,26 @@
           <label for="date">Date</label>
           <input type="date" id="task-new-date" />
           <label for="priority">Important</label>
-          <input type="checkbox" id="new-priority">
+          <input type="checkbox" id="new-priority" />
           <button type="submit">Add changes</button>
         </form>
       </div>
     </main>
+    <footer>
+      <p>
+        Build and designed by
+        <a
+          href="https://github.com/Mashha/Library_project"
+          id="name"
+          target="_blank"
+        >
+          Pimu
+        </a>
+        |
+        <a href="https://github.com/Mashha" target="_blank">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </p>
+    </footer>
   </body>
 </html>

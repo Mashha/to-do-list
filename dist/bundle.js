@@ -16,12 +16,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__);
 // Imports
 
 
+
+var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ../images/logo.png */ "./src/images/logo.png"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_1___ = new URL(/* asset import */ __webpack_require__(/*! ../images/image-quote.png */ "./src/images/image-quote.png"), __webpack_require__.b);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Aclonica&display=swap);"]);
+___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Mukta:wght@200;300&display=swap);"]);
+var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);
+var ___CSS_LOADER_URL_REPLACEMENT_1___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_1___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n  padding: 0;\r\n  margin: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  height: 100vh;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr 4fr;\r\n}\r\n\r\nheader {\r\n  grid-column: 1/-1;\r\n  text-align: center;\r\n  border-bottom: 2px solid black;\r\n}\r\n\r\naside {\r\n  padding: 10px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  gap: 15px;\r\n  border-right: 2px solid black;\r\n}\r\n\r\n.projects {\r\n  font-size: 25px;\r\n}\r\n\r\n.today {\r\n    cursor: pointer;\r\n}\r\n\r\n.all-tasks {\r\n    cursor: pointer;\r\n}\r\n\r\n.week-tasks {\r\n    cursor: pointer;\r\n}\r\n\r\nmain {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: baseline;\r\n  height: 100vh;\r\n}\r\n\r\n.container {\r\n  width: 60%;\r\n  margin: auto;\r\n  height: 60%;\r\n  background-color: wheat;\r\n  border-radius: 10px;\r\n}\r\n\r\n.container-inner {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: space-evenly;\r\n  gap: 20px;\r\n  padding: 15px;\r\n  height: inherit;\r\n}\r\n\r\n#tasks {\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 10px;\r\n}\r\n\r\n#btn-close {\r\n  display: none;\r\n}\r\n\r\n#title-project {\r\n  font-size: 24px;\r\n  text-transform: capitalize;\r\n}\r\n\r\n.title {\r\n    background: url(//s2.svgbox.net/pen-brushes.svg?ic=brush-2&color=0000ff);\r\n    \r\n}\r\n\r\n.task-element {\r\n  display: flex;\r\n  padding: 5px;\r\n  background-color: tan;\r\n  border-radius: 10px;\r\n  cursor: pointer;\r\n}\r\n\r\n.task-details {\r\n  display: flex;\r\n  padding-left: 15px;\r\n  flex: 1;\r\n}\r\n\r\n.remove-task {\r\n  border: none;\r\n  background: transparent;\r\n  cursor: pointer;\r\n}\r\n\r\n.due-date {\r\n  padding-right: 15px;\r\n}\r\n\r\n.modal {\r\n  width: 100%;\r\n  height: 100vh;\r\n  z-index: 10;\r\n}\r\n\r\n.edit-task-modal form {\r\n  width: 450px;\r\n  height: auto;\r\n  z-index: 4;\r\n  background-color: white;\r\n  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;\r\n  display: flex;\r\n  border-radius: 10px;\r\n  flex-direction: column;\r\n  padding: 10px;\r\n  gap: 5px;\r\n}\r\n\r\n#close-edit-task {\r\n  align-self: flex-end;\r\n  background: transparent;\r\n  border: none;\r\n}\r\n\r\n#close-edit-task i {\r\n  font-size: 22px;\r\n  cursor: pointer;\r\n}\r\n\r\n.edit-project {\r\n  cursor: pointer;\r\n}\r\n\r\n.remove-li {\r\n  cursor: pointer;\r\n}\r\n\r\n.btn-open-modal {\r\n  cursor: pointer;\r\n}\r\n\r\n.add-task {\r\n  cursor: pointer;\r\n}\r\n\r\n#form {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n#form.buttons {\r\n  display: flex;\r\n}\r\n\r\n/* js */\r\n.form-modal {\r\n  display: none;\r\n}\r\n.open {\r\n  display: block;\r\n}\r\n\r\n.form-edit-project {\r\n  display: none;\r\n}\r\n\r\n.open-form {\r\n  display: block;\r\n}\r\n\r\n.hidden {\r\n  display: none;\r\n}\r\n\r\n.list-item {\r\n  cursor: pointer;\r\n}\r\n\r\n.taskForm {\r\n  display: none;\r\n}\r\n\r\n.open-task-form {\r\n  display: block;\r\n}\r\n\r\n.edit-task-modal {\r\n  display: none;\r\n}\r\n\r\n.edit-task-modal.open {\r\n  display: block;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/styles/style.css"],"names":[],"mappings":"AAAA;EACE,UAAU;EACV,SAAS;EACT,sBAAsB;AACxB;;AAEA;EACE,aAAa;EACb,WAAW;EACX,aAAa;EACb,8BAA8B;AAChC;;AAEA;EACE,iBAAiB;EACjB,kBAAkB;EAClB,8BAA8B;AAChC;;AAEA;EACE,aAAa;EACb,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,SAAS;EACT,6BAA6B;AAC/B;;AAEA;EACE,eAAe;AACjB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,eAAe;AACnB;;AAEA;EACE,aAAa;EACb,uBAAuB;EACvB,qBAAqB;EACrB,aAAa;AACf;;AAEA;EACE,UAAU;EACV,YAAY;EACZ,WAAW;EACX,uBAAuB;EACvB,mBAAmB;AACrB;;AAEA;EACE,aAAa;EACb,sBAAsB;EACtB,6BAA6B;EAC7B,SAAS;EACT,aAAa;EACb,eAAe;AACjB;;AAEA;EACE,aAAa;EACb,sBAAsB;EACtB,SAAS;AACX;;AAEA;EACE,aAAa;AACf;;AAEA;EACE,eAAe;EACf,0BAA0B;AAC5B;;AAEA;IACI,wEAAwE;;AAE5E;;AAEA;EACE,aAAa;EACb,YAAY;EACZ,qBAAqB;EACrB,mBAAmB;EACnB,eAAe;AACjB;;AAEA;EACE,aAAa;EACb,kBAAkB;EAClB,OAAO;AACT;;AAEA;EACE,YAAY;EACZ,uBAAuB;EACvB,eAAe;AACjB;;AAEA;EACE,mBAAmB;AACrB;;AAEA;EACE,WAAW;EACX,aAAa;EACb,WAAW;AACb;;AAEA;EACE,YAAY;EACZ,YAAY;EACZ,UAAU;EACV,uBAAuB;EACvB,qDAAqD;EACrD,aAAa;EACb,mBAAmB;EACnB,sBAAsB;EACtB,aAAa;EACb,QAAQ;AACV;;AAEA;EACE,oBAAoB;EACpB,uBAAuB;EACvB,YAAY;AACd;;AAEA;EACE,eAAe;EACf,eAAe;AACjB;;AAEA;EACE,eAAe;AACjB;;AAEA;EACE,eAAe;AACjB;;AAEA;EACE,eAAe;AACjB;;AAEA;EACE,eAAe;AACjB;;AAEA;EACE,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,aAAa;AACf;;AAEA,OAAO;AACP;EACE,aAAa;AACf;AACA;EACE,cAAc;AAChB;;AAEA;EACE,aAAa;AACf;;AAEA;EACE,cAAc;AAChB;;AAEA;EACE,aAAa;AACf;;AAEA;EACE,eAAe;AACjB;;AAEA;EACE,aAAa;AACf;;AAEA;EACE,cAAc;AAChB;;AAEA;EACE,aAAa;AACf;;AAEA;EACE,cAAc;AAChB","sourcesContent":["* {\r\n  padding: 0;\r\n  margin: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  height: 100vh;\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr 4fr;\r\n}\r\n\r\nheader {\r\n  grid-column: 1/-1;\r\n  text-align: center;\r\n  border-bottom: 2px solid black;\r\n}\r\n\r\naside {\r\n  padding: 10px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  gap: 15px;\r\n  border-right: 2px solid black;\r\n}\r\n\r\n.projects {\r\n  font-size: 25px;\r\n}\r\n\r\n.today {\r\n    cursor: pointer;\r\n}\r\n\r\n.all-tasks {\r\n    cursor: pointer;\r\n}\r\n\r\n.week-tasks {\r\n    cursor: pointer;\r\n}\r\n\r\nmain {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: baseline;\r\n  height: 100vh;\r\n}\r\n\r\n.container {\r\n  width: 60%;\r\n  margin: auto;\r\n  height: 60%;\r\n  background-color: wheat;\r\n  border-radius: 10px;\r\n}\r\n\r\n.container-inner {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: space-evenly;\r\n  gap: 20px;\r\n  padding: 15px;\r\n  height: inherit;\r\n}\r\n\r\n#tasks {\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 10px;\r\n}\r\n\r\n#btn-close {\r\n  display: none;\r\n}\r\n\r\n#title-project {\r\n  font-size: 24px;\r\n  text-transform: capitalize;\r\n}\r\n\r\n.title {\r\n    background: url(//s2.svgbox.net/pen-brushes.svg?ic=brush-2&color=0000ff);\r\n    \r\n}\r\n\r\n.task-element {\r\n  display: flex;\r\n  padding: 5px;\r\n  background-color: tan;\r\n  border-radius: 10px;\r\n  cursor: pointer;\r\n}\r\n\r\n.task-details {\r\n  display: flex;\r\n  padding-left: 15px;\r\n  flex: 1;\r\n}\r\n\r\n.remove-task {\r\n  border: none;\r\n  background: transparent;\r\n  cursor: pointer;\r\n}\r\n\r\n.due-date {\r\n  padding-right: 15px;\r\n}\r\n\r\n.modal {\r\n  width: 100%;\r\n  height: 100vh;\r\n  z-index: 10;\r\n}\r\n\r\n.edit-task-modal form {\r\n  width: 450px;\r\n  height: auto;\r\n  z-index: 4;\r\n  background-color: white;\r\n  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;\r\n  display: flex;\r\n  border-radius: 10px;\r\n  flex-direction: column;\r\n  padding: 10px;\r\n  gap: 5px;\r\n}\r\n\r\n#close-edit-task {\r\n  align-self: flex-end;\r\n  background: transparent;\r\n  border: none;\r\n}\r\n\r\n#close-edit-task i {\r\n  font-size: 22px;\r\n  cursor: pointer;\r\n}\r\n\r\n.edit-project {\r\n  cursor: pointer;\r\n}\r\n\r\n.remove-li {\r\n  cursor: pointer;\r\n}\r\n\r\n.btn-open-modal {\r\n  cursor: pointer;\r\n}\r\n\r\n.add-task {\r\n  cursor: pointer;\r\n}\r\n\r\n#form {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n#form.buttons {\r\n  display: flex;\r\n}\r\n\r\n/* js */\r\n.form-modal {\r\n  display: none;\r\n}\r\n.open {\r\n  display: block;\r\n}\r\n\r\n.form-edit-project {\r\n  display: none;\r\n}\r\n\r\n.open-form {\r\n  display: block;\r\n}\r\n\r\n.hidden {\r\n  display: none;\r\n}\r\n\r\n.list-item {\r\n  cursor: pointer;\r\n}\r\n\r\n.taskForm {\r\n  display: none;\r\n}\r\n\r\n.open-task-form {\r\n  display: block;\r\n}\r\n\r\n.edit-task-modal {\r\n  display: none;\r\n}\r\n\r\n.edit-task-modal.open {\r\n  display: block;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n  padding: 0;\r\n  margin: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\n:root {\r\n  --bg-body: #d7cfc3;\r\n  --bg-container: #f8f0e8;\r\n  --font-color: #605a56;\r\n  --underline-color: #b46e53;\r\n}\r\n\r\nbody {\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr 4fr;\r\n  font-family: \"mukta\", sans-serif;\r\n  background-color: var(--bg-body);\r\n  color: var(--font-color);\r\n  /* background-image: url(\"../images/Untitled\\ design\\(8\\).png\"); */\r\n  background-size: cover;\r\n  background-position: center;\r\n  grid-template-areas:\r\n    \"header header header header header\"\r\n    \"aside main main main main\";\r\n}\r\n\r\nheader {\r\n  grid-area: header;\r\n  text-align: center;\r\n  background-color: #f8f0e8;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  gap: 10px;\r\n}\r\n\r\n.image-logo {\r\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\r\n  background-size: cover;\r\n  width: 40px;\r\n  height: 40px;\r\n}\r\n\r\naside {\r\n  padding: 12px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: flex-start;\r\n  grid-area: aside;\r\n  gap: 15px;\r\n}\r\n\r\n.top {\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  width: 100%;\r\n  gap: 15px;\r\n}\r\n\r\n.message {\r\n  background-color: #f8f0e8;\r\n  display: flex;\r\n  border-radius: 10px;\r\n  flex-direction: column;\r\n  padding: 10px;\r\n  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;\r\n}\r\n\r\n.day-message {\r\n  font-size: 15px;\r\n}\r\n\r\n#day-number {\r\n  font-size: 36px;\r\n  margin-top: -16px;\r\n  position: relative;\r\n}\r\n\r\n#day-number:after {\r\n  content: \"\";\r\n  position: absolute;\r\n  bottom: 6px;\r\n  width: 20px;\r\n  height: 5px;\r\n  background-color: var(--underline-color);\r\n  left: 0;\r\n}\r\n\r\n.image {\r\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\r\n  height: auto;\r\n  width: 100%;\r\n  border-radius: 10px;\r\n  background-size: cover;\r\n  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;\r\n}\r\n\r\n.bottom {\r\n  background-color: var(--bg-container);\r\n  border-radius: 10px;\r\n  width: 100%;\r\n  height: 100%;\r\n  padding: 5px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;\r\n}\r\n\r\n.home,\r\n.projects {\r\n  font-size: 24px;\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 10px;\r\n  justify-content: center;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.home span,\r\n.projects span {\r\n  position: relative;\r\n}\r\n\r\n.home span:after {\r\n  content: \"\";\r\n  position: absolute;\r\n  bottom: 5px;\r\n  left: 0;\r\n  width: 59px;\r\n  height: 3px;\r\n  background-color: var(--underline-color);\r\n}\r\n\r\n.home-inner {\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 5px;\r\n}\r\n\r\n.projects {\r\n  margin-top: 15px;\r\n}\r\n\r\n.projects span:after {\r\n  content: \"\";\r\n  position: absolute;\r\n  bottom: 5px;\r\n  left: 0;\r\n  width: 79px;\r\n  height: 3px;\r\n  background-color: var(--underline-color);\r\n}\r\n\r\n.project-container {\r\n  padding-left: 5px;\r\n  flex: 1;\r\n}\r\n\r\n.project-container > div {\r\n  transition: all 0.3s ease-in;\r\n}\r\n\r\n.project-container > div:hover {\r\n  background-color: var(--bg-body);\r\n}\r\n\r\n.today,\r\n.important,\r\n.all-tasks,\r\n.week-tasks {\r\n  cursor: pointer;\r\n  display: flex;\r\n  gap: 10px;\r\n  font-size: 18px;\r\n  padding-left: 5px;\r\n  transition: all 0.3s ease-in;\r\n}\r\n.today:hover,\r\n.important:hover,\r\n.all-tasks:hover,\r\n.week-tasks:hover {\r\n  background-color: var(--bg-body);\r\n}\r\n\r\n.week-tasks span i {\r\n  padding-left: 2px;\r\n}\r\n\r\nmain {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: baseline;\r\n  min-height: 90vh;\r\n  position: relative;\r\n  grid-area: main;\r\n}\r\n\r\n.container {\r\n  width: 90%;\r\n  margin: auto;\r\n  min-height: 80vh;\r\n  background-color: #f8f0e8;\r\n  border-radius: 10px;\r\n  position: relative;\r\n  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;\r\n}\r\n\r\n.container-inner {\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 20px;\r\n  padding: 20px;\r\n  min-height: inherit;\r\n}\r\n\r\n#tasks {\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 10px;\r\n}\r\n\r\n#btn-close {\r\n  display: none;\r\n}\r\n\r\n#title-project {\r\n  font-size: 24px;\r\n  text-transform: capitalize;\r\n  text-align: center;\r\n  font-family: \"Aclonica\", sans-serif;\r\n}\r\n\r\n.title {\r\n  position: relative;\r\n  font-family: \"Aclonica\", sans-serif;\r\n}\r\n\r\n.title:after {\r\n  content: \"\";\r\n  position: absolute;\r\n  bottom: 6px;\r\n  left: 0;\r\n  width: 170px;\r\n  height: 15px;\r\n  background-color: #a7d9da;\r\n  z-index: -1;\r\n}\r\n\r\n.task-element {\r\n  display: flex;\r\n  padding: 5px;\r\n  border: 1px solid rgba(0, 0, 0, 0.258);\r\n  border-radius: 10px;\r\n  cursor: pointer;\r\n  gap: 10px;\r\n}\r\n\r\n.task-details {\r\n  display: flex;\r\n  flex: 1;\r\n}\r\n\r\n.tasks-container {\r\n  flex: 1;\r\n}\r\n\r\n.remove-task {\r\n  border: none;\r\n  background: transparent;\r\n  cursor: pointer;\r\n}\r\n\r\n.star-yellow {\r\n  color: orange;\r\n}\r\n\r\n.modal {\r\n  width: 100%;\r\n  height: 100vh;\r\n  z-index: 10;\r\n}\r\n\r\n.edit-task-modal form {\r\n  width: 450px;\r\n  height: auto;\r\n  z-index: 4;\r\n  background-color: white;\r\n  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;\r\n  display: flex;\r\n  border-radius: 10px;\r\n  flex-direction: column;\r\n  padding: 10px;\r\n  gap: 5px;\r\n}\r\n\r\n.modal {\r\n  position: absolute;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  left: 0;\r\n  right: 0;\r\n}\r\n\r\n#close-edit-task {\r\n  align-self: flex-end;\r\n  background: transparent;\r\n  border: none;\r\n}\r\n\r\n#close-edit-task i {\r\n  font-size: 22px;\r\n  cursor: pointer;\r\n}\r\n\r\n.edit-project {\r\n  cursor: pointer;\r\n}\r\n\r\n.remove-li {\r\n  cursor: pointer;\r\n  border: none;\r\n  background: transparent;\r\n}\r\n\r\n.btn-open-modal {\r\n  display: flex;\r\n  gap: 10px;\r\n  justify-content: center;\r\n  align-items: center;\r\n  cursor: pointer;\r\n  border: none;\r\n  font-size: 18px;\r\n}\r\n\r\n.add-task {\r\n  cursor: pointer;\r\n  justify-content: center;\r\n  display: flex;\r\n  gap: 10px;\r\n  align-items: center;\r\n  font-size: 20px;\r\n}\r\n\r\n#form {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n#form.buttons {\r\n  display: flex;\r\n}\r\n\r\n/* js */\r\n.form-modal {\r\n  display: none;\r\n}\r\n.open {\r\n  display: block;\r\n}\r\n\r\n.form-edit-project {\r\n  display: none;\r\n}\r\n\r\n.open-form {\r\n  display: block;\r\n}\r\n\r\n.hidden {\r\n  display: none;\r\n}\r\n\r\n.list-item {\r\n  cursor: pointer;\r\n  display: flex;\r\n  gap: 10px;\r\n  font-size: 18px;\r\n  text-transform: capitalize;\r\n}\r\n\r\n.taskForm {\r\n  display: none;\r\n}\r\n\r\n.open-task-form {\r\n  display: block;\r\n}\r\n\r\n.edit-task-modal {\r\n  display: none;\r\n}\r\n\r\n.edit-task-modal.open {\r\n  display: flex;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/styles/style.css"],"names":[],"mappings":"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","sourcesContent":["@import url(\"https://fonts.googleapis.com/css2?family=Aclonica&display=swap\");\r\n@import url(\"https://fonts.googleapis.com/css2?family=Mukta:wght@200;300&display=swap\");\r\n\r\n* {\r\n  padding: 0;\r\n  margin: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\n:root {\r\n  --bg-body: #d7cfc3;\r\n  --bg-container: #f8f0e8;\r\n  --font-color: #605a56;\r\n  --underline-color: #b46e53;\r\n}\r\n\r\nbody {\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 1fr 4fr;\r\n  font-family: \"mukta\", sans-serif;\r\n  background-color: var(--bg-body);\r\n  color: var(--font-color);\r\n  /* background-image: url(\"../images/Untitled\\ design\\(8\\).png\"); */\r\n  background-size: cover;\r\n  background-position: center;\r\n  grid-template-areas:\r\n    \"header header header header header\"\r\n    \"aside main main main main\";\r\n}\r\n\r\nheader {\r\n  grid-area: header;\r\n  text-align: center;\r\n  background-color: #f8f0e8;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  gap: 10px;\r\n}\r\n\r\n.image-logo {\r\n  background-image: url(\"../images/logo.png\");\r\n  background-size: cover;\r\n  width: 40px;\r\n  height: 40px;\r\n}\r\n\r\naside {\r\n  padding: 12px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: flex-start;\r\n  grid-area: aside;\r\n  gap: 15px;\r\n}\r\n\r\n.top {\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  width: 100%;\r\n  gap: 15px;\r\n}\r\n\r\n.message {\r\n  background-color: #f8f0e8;\r\n  display: flex;\r\n  border-radius: 10px;\r\n  flex-direction: column;\r\n  padding: 10px;\r\n  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;\r\n}\r\n\r\n.day-message {\r\n  font-size: 15px;\r\n}\r\n\r\n#day-number {\r\n  font-size: 36px;\r\n  margin-top: -16px;\r\n  position: relative;\r\n}\r\n\r\n#day-number:after {\r\n  content: \"\";\r\n  position: absolute;\r\n  bottom: 6px;\r\n  width: 20px;\r\n  height: 5px;\r\n  background-color: var(--underline-color);\r\n  left: 0;\r\n}\r\n\r\n.image {\r\n  background-image: url(\"../images/image-quote.png\");\r\n  height: auto;\r\n  width: 100%;\r\n  border-radius: 10px;\r\n  background-size: cover;\r\n  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;\r\n}\r\n\r\n.bottom {\r\n  background-color: var(--bg-container);\r\n  border-radius: 10px;\r\n  width: 100%;\r\n  height: 100%;\r\n  padding: 5px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;\r\n}\r\n\r\n.home,\r\n.projects {\r\n  font-size: 24px;\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 10px;\r\n  justify-content: center;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.home span,\r\n.projects span {\r\n  position: relative;\r\n}\r\n\r\n.home span:after {\r\n  content: \"\";\r\n  position: absolute;\r\n  bottom: 5px;\r\n  left: 0;\r\n  width: 59px;\r\n  height: 3px;\r\n  background-color: var(--underline-color);\r\n}\r\n\r\n.home-inner {\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 5px;\r\n}\r\n\r\n.projects {\r\n  margin-top: 15px;\r\n}\r\n\r\n.projects span:after {\r\n  content: \"\";\r\n  position: absolute;\r\n  bottom: 5px;\r\n  left: 0;\r\n  width: 79px;\r\n  height: 3px;\r\n  background-color: var(--underline-color);\r\n}\r\n\r\n.project-container {\r\n  padding-left: 5px;\r\n  flex: 1;\r\n}\r\n\r\n.project-container > div {\r\n  transition: all 0.3s ease-in;\r\n}\r\n\r\n.project-container > div:hover {\r\n  background-color: var(--bg-body);\r\n}\r\n\r\n.today,\r\n.important,\r\n.all-tasks,\r\n.week-tasks {\r\n  cursor: pointer;\r\n  display: flex;\r\n  gap: 10px;\r\n  font-size: 18px;\r\n  padding-left: 5px;\r\n  transition: all 0.3s ease-in;\r\n}\r\n.today:hover,\r\n.important:hover,\r\n.all-tasks:hover,\r\n.week-tasks:hover {\r\n  background-color: var(--bg-body);\r\n}\r\n\r\n.week-tasks span i {\r\n  padding-left: 2px;\r\n}\r\n\r\nmain {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: baseline;\r\n  min-height: 90vh;\r\n  position: relative;\r\n  grid-area: main;\r\n}\r\n\r\n.container {\r\n  width: 90%;\r\n  margin: auto;\r\n  min-height: 80vh;\r\n  background-color: #f8f0e8;\r\n  border-radius: 10px;\r\n  position: relative;\r\n  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;\r\n}\r\n\r\n.container-inner {\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 20px;\r\n  padding: 20px;\r\n  min-height: inherit;\r\n}\r\n\r\n#tasks {\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 10px;\r\n}\r\n\r\n#btn-close {\r\n  display: none;\r\n}\r\n\r\n#title-project {\r\n  font-size: 24px;\r\n  text-transform: capitalize;\r\n  text-align: center;\r\n  font-family: \"Aclonica\", sans-serif;\r\n}\r\n\r\n.title {\r\n  position: relative;\r\n  font-family: \"Aclonica\", sans-serif;\r\n}\r\n\r\n.title:after {\r\n  content: \"\";\r\n  position: absolute;\r\n  bottom: 6px;\r\n  left: 0;\r\n  width: 170px;\r\n  height: 15px;\r\n  background-color: #a7d9da;\r\n  z-index: -1;\r\n}\r\n\r\n.task-element {\r\n  display: flex;\r\n  padding: 5px;\r\n  border: 1px solid rgba(0, 0, 0, 0.258);\r\n  border-radius: 10px;\r\n  cursor: pointer;\r\n  gap: 10px;\r\n}\r\n\r\n.task-details {\r\n  display: flex;\r\n  flex: 1;\r\n}\r\n\r\n.tasks-container {\r\n  flex: 1;\r\n}\r\n\r\n.remove-task {\r\n  border: none;\r\n  background: transparent;\r\n  cursor: pointer;\r\n}\r\n\r\n.star-yellow {\r\n  color: orange;\r\n}\r\n\r\n.modal {\r\n  width: 100%;\r\n  height: 100vh;\r\n  z-index: 10;\r\n}\r\n\r\n.edit-task-modal form {\r\n  width: 450px;\r\n  height: auto;\r\n  z-index: 4;\r\n  background-color: white;\r\n  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;\r\n  display: flex;\r\n  border-radius: 10px;\r\n  flex-direction: column;\r\n  padding: 10px;\r\n  gap: 5px;\r\n}\r\n\r\n.modal {\r\n  position: absolute;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  left: 0;\r\n  right: 0;\r\n}\r\n\r\n#close-edit-task {\r\n  align-self: flex-end;\r\n  background: transparent;\r\n  border: none;\r\n}\r\n\r\n#close-edit-task i {\r\n  font-size: 22px;\r\n  cursor: pointer;\r\n}\r\n\r\n.edit-project {\r\n  cursor: pointer;\r\n}\r\n\r\n.remove-li {\r\n  cursor: pointer;\r\n  border: none;\r\n  background: transparent;\r\n}\r\n\r\n.btn-open-modal {\r\n  display: flex;\r\n  gap: 10px;\r\n  justify-content: center;\r\n  align-items: center;\r\n  cursor: pointer;\r\n  border: none;\r\n  font-size: 18px;\r\n}\r\n\r\n.add-task {\r\n  cursor: pointer;\r\n  justify-content: center;\r\n  display: flex;\r\n  gap: 10px;\r\n  align-items: center;\r\n  font-size: 20px;\r\n}\r\n\r\n#form {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n#form.buttons {\r\n  display: flex;\r\n}\r\n\r\n/* js */\r\n.form-modal {\r\n  display: none;\r\n}\r\n.open {\r\n  display: block;\r\n}\r\n\r\n.form-edit-project {\r\n  display: none;\r\n}\r\n\r\n.open-form {\r\n  display: block;\r\n}\r\n\r\n.hidden {\r\n  display: none;\r\n}\r\n\r\n.list-item {\r\n  cursor: pointer;\r\n  display: flex;\r\n  gap: 10px;\r\n  font-size: 18px;\r\n  text-transform: capitalize;\r\n}\r\n\r\n.taskForm {\r\n  display: none;\r\n}\r\n\r\n.open-task-form {\r\n  display: block;\r\n}\r\n\r\n.edit-task-modal {\r\n  display: none;\r\n}\r\n\r\n.edit-task-modal.open {\r\n  display: flex;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -118,6 +127,41 @@ module.exports = function (cssWithMappingToString) {
     }
   };
   return list;
+};
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/getUrl.js":
+/*!********************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/getUrl.js ***!
+  \********************************************************/
+/***/ ((module) => {
+
+
+
+module.exports = function (url, options) {
+  if (!options) {
+    options = {};
+  }
+  if (!url) {
+    return url;
+  }
+  url = String(url.__esModule ? url.default : url);
+
+  // If url is already wrapped in quotes, remove them
+  if (/^['"].*['"]$/.test(url)) {
+    url = url.slice(1, -1);
+  }
+  if (options.hash) {
+    url += options.hash;
+  }
+
+  // Should url be wrapped?
+  // See https://drafts.csswg.org/css-values-3/#urls
+  if (/["'() \t\n]|(%20)/.test(url) || options.needQuotes) {
+    return "\"".concat(url.replace(/"/g, '\\"').replace(/\n/g, "\\n"), "\"");
+  }
+  return url;
 };
 
 /***/ }),
@@ -573,6 +617,8 @@ function displayPage() {
     const projectContainer = document.querySelector(".project-container");
     const listElement = document.createElement("div");
     listElement.classList.add("list-item");
+    const icon = document.createElement("span");
+    icon.innerHTML = '<i class="fa-regular fa-folder"></i>';
     const projectName = document.createElement("span");
     projectName.textContent = project.name;
     listElement.id = project.id;
@@ -583,9 +629,9 @@ function displayPage() {
     editLi.classList.add("edit-project");
     editLi.textContent = "edit";
     if (project.name !== "general") {
-      listElement.append(projectName, editLi, deleteLi);
+      listElement.append(icon, projectName, editLi, deleteLi);
     } else {
-      listElement.append(projectName);
+      listElement.append(icon, projectName);
     }
 
     projectContainer.append(listElement);
@@ -606,6 +652,7 @@ function displayPage() {
       const findIndex = _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.storedLists.indexOf(getAListWithID);
       _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.removeList(findIndex);
       displayAllProjects();
+      todaysTasks();
     });
   }
 
@@ -703,13 +750,15 @@ function displayPage() {
     const title = e.target[0].value;
     const notes = e.target[1].value;
     const date = e.target[2].value;
+    const priority = e.target[3].checked;
+
     const clickedProject = document.querySelector("[data-selected-project]");
     if (clickedProject === null) {
-      _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.storedLists[0].addTodo(title, notes, date);
+      _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.storedLists[0].addTodo(title, notes, date, priority);
       _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.save();
     } else {
       const findProject = _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.getAList(parseInt(clickedProject.id));
-      findProject.addTodo(title, notes, date);
+      findProject.addTodo(title, notes, date, priority);
       _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.save();
     }
     closeTaskModal();
@@ -740,13 +789,22 @@ function displayPage() {
     taskElement.id = singleTask.id;
     taskElement.classList.add("task-element");
     const taskCheck = document.createElement("input");
-    taskCheck.type = "radio";
+    taskCheck.type = "checkbox";
     const taskDetails = document.createElement("div");
     taskDetails.classList.add("task-details");
     const taskName = document.createElement("div");
     taskName.textContent = singleTask.title;
     const taskNotes = document.createElement("div");
     taskNotes.textContent = singleTask.notes;
+    const importance = document.createElement("span");
+    importance.classList.add("task-important");
+    importance.innerHTML = '<i class="fa-regular fa-star"></i>';
+    if (singleTask.priority === true) {
+      importance.style.color = "orange";
+    } else {
+      importance.style.color = "black";
+    }
+
     const dueDate = document.createElement("div");
     dueDate.classList.add("due-date");
     if (singleTask.date === "") {
@@ -761,7 +819,7 @@ function displayPage() {
     removeTask.innerHTML = '<i class="fa-regular fa-trash-can"></i>';
 
     taskDetails.append(taskName, taskNotes);
-    taskElement.append(taskCheck, taskDetails, dueDate, removeTask);
+    taskElement.append(taskCheck, taskDetails, dueDate, importance, removeTask);
     tasksUl.append(taskElement);
 
     // remove tasks
@@ -780,7 +838,7 @@ function displayPage() {
     });
 
     // edit tasks
-    taskElement.addEventListener("click", function () {
+    taskDetails.addEventListener("click", function () {
       const editTaskForm = document.querySelector(".edit-task-modal");
       editTaskForm.classList.add("open");
       const taskTitle = document.querySelector("#task-new-title");
@@ -791,6 +849,29 @@ function displayPage() {
       taskDate.value = singleTask.date;
       const taskId = document.querySelector("#task-id");
       taskId.value = singleTask.id;
+      const taskPriority = document.querySelector("#new-priority");
+      taskPriority.checked = singleTask.priority;
+      console.log(taskPriority);
+    });
+
+    //priority
+    importance.addEventListener("click", function () {
+      console.log(singleTask.priority);
+      if (singleTask.priority === true) {
+        singleTask.priority = false;
+      } else {
+        singleTask.priority = true;
+      }
+      displayAllTasks();
+    });
+
+    //check if done
+    taskCheck.addEventListener("change", function () {
+      if (taskCheck.checked === true) {
+        taskName.style.textDecoration = "line-through";
+      } else {
+        taskName.style.textDecoration = "none";
+      }
     });
   }
 
@@ -800,13 +881,21 @@ function displayPage() {
     const taskTitle = document.querySelector("#task-new-title").value;
     const taskNotes = document.querySelector("#task-notes").value;
     const taskDate = document.querySelector("#task-new-date").value;
+    const taskPriority = document.querySelector("#new-priority").checked;
+
     const taskId = document.querySelector("#task-id");
     const titleProject = document.querySelector(".title-project");
     _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.storedLists.forEach(function (project) {
       if (project.name === titleProject.textContent) {
         project.toDoArray.forEach(function (task) {
           if (task.id === parseInt(taskId.value)) {
-            project.editTodo(task, taskTitle, taskNotes, taskDate);
+            project.editTodo(
+              task,
+              taskTitle,
+              taskNotes,
+              taskDate,
+              taskPriority
+            );
             displayAllTasks();
             _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.save();
             closeEditForm();
@@ -826,18 +915,49 @@ function displayPage() {
   }
 
   //type part of the day
-  const today = new Date()
-  const hours = today.getHours()
-  const message = document.querySelector(".day-message")
-  
-  if(hours < 12) {
-    message.textContent = "Good morning"
+  const today = new Date();
+  const hours = today.getHours();
+  const message = document.querySelector(".day-message");
+
+  if (hours < 12) {
+    message.textContent = "Good morning";
   } else if (hours < 18) {
-    message.textContent = "Good afternoon"
+    message.textContent = "Good afternoon";
   } else {
-    message.textContent = "Good evening"
+    message.textContent = "Good evening";
   }
 
+  // date in word
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const wordDay = days[new Date().getDay()];
+  const numberDay = today.getDate();
+  //const month = months[new Date().getMonth()];
+  const dateToday = document.querySelector("#day-word");
+  dateToday.textContent = `${wordDay}`;
+  const numberOfToday = document.querySelector("#day-number");
+  numberOfToday.textContent = `${numberDay}`;
   //get date
   const currentDate = new Date().toJSON().slice(0, 10);
   //remove list elements
@@ -849,8 +969,10 @@ function displayPage() {
   }
 
   //display today's tasks
-  const todaysTasks = document.querySelector("#tasks-for-today");
-  todaysTasks.addEventListener("click", function () {
+  document
+    .querySelector("#tasks-for-today")
+    .addEventListener("click", todaysTasks);
+  function todaysTasks() {
     removeLi();
     const projectName = document.querySelector(".title-project");
     projectName.textContent = "Today";
@@ -865,7 +987,7 @@ function displayPage() {
         }
       });
     });
-  });
+  }
 
   //display all tasks
   const allTasks = document.querySelector("#list-of-all-tasks");
@@ -873,10 +995,7 @@ function displayPage() {
     removeLi();
     const projectName = document.querySelector(".title-project");
     projectName.textContent = "All tasks";
-    const taskElements = document.querySelectorAll(".task-element");
-    taskElements.forEach((li) => {
-      li.remove();
-    });
+
     _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.storedLists.forEach(function (project) {
       project.toDoArray.forEach(function (task) {
         displaySingleTask(task);
@@ -885,10 +1004,25 @@ function displayPage() {
   });
 
   // display tasks of this coming week
-  const tasksOfTheWeek = document.querySelector("#tasks-of-this-week")
-  tasksOfTheWeek.addEventListener("click", function(){
-    console.log("click")
-  })
+  const tasksOfTheWeek = document.querySelector("#tasks-of-this-week");
+  tasksOfTheWeek.addEventListener("click", function () {
+    console.log("click");
+  });
+
+  //display tasks that are important
+  const importantTasks = document.querySelector("#list-of-important-tasks");
+  importantTasks.addEventListener("click", function () {
+    removeLi();
+    const projectName = document.querySelector(".title-project");
+    projectName.textContent = "Important";
+    _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.storedLists.forEach(function (project) {
+      project.toDoArray.forEach(function (task) {
+        if (task.priority === true) {
+          displaySingleTask(task);
+        }
+      });
+    });
+  });
 }
 
 
@@ -1037,8 +1171,8 @@ function toDoList(name, id = Date.now()) {
   return toDoArray.find((task)=> task.id === id)
   }
 
-  function editTodo(object, newTitle, newNotes, newDate){
-    object.title = newTitle, object.notes = newNotes, object.date = newDate
+  function editTodo(object, newTitle, newNotes, newDate, newPriority){
+    object.title = newTitle, object.notes = newNotes, object.date = newDate, object.priority = newPriority
   }
 
   function removeTodo(todo) {
@@ -1081,6 +1215,26 @@ function Todo(title, notes, date, priority, id = Date.now()) {
 }
 
 
+/***/ }),
+
+/***/ "./src/images/image-quote.png":
+/*!************************************!*\
+  !*** ./src/images/image-quote.png ***!
+  \************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "70b92372a7835a7bec80.png";
+
+/***/ }),
+
+/***/ "./src/images/logo.png":
+/*!*****************************!*\
+  !*** ./src/images/logo.png ***!
+  \*****************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "419549daee4216b27d57.png";
+
 /***/ })
 
 /******/ 	});
@@ -1109,6 +1263,9 @@ function Todo(title, notes, date, priority, id = Date.now()) {
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
@@ -1134,6 +1291,18 @@ function Todo(title, notes, date, priority, id = Date.now()) {
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -1148,6 +1317,52 @@ function Todo(title, notes, date, priority, id = Date.now()) {
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		__webpack_require__.b = document.baseURI || self.location.href;
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"main": 0
+/******/ 		};
+/******/ 		
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		// no on chunks loaded
+/******/ 		
+/******/ 		// no jsonp function
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/nonce */
@@ -1167,7 +1382,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dom_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dom.js */ "./src/dom.js");
 
 
-
+//import tape from "./images/tape.png"
 (0,_dom_js__WEBPACK_IMPORTED_MODULE_1__.displayPage)();
 
 
