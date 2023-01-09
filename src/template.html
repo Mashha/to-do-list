@@ -66,39 +66,7 @@
               Add task<i class="fa-solid fa-square-plus"></i>
             </div>
             <button class="close-task-form" id="btn-close">Close</button>
-            <div class="taskForm">
-              <form action="" id="formForTasks">
-                <label for="title">Title</label>
-                <input type="text" name="title" id="task-title" />
-                <label for="notes">Notes(optional)</label>
-                <input type="text" name="notes" />
-                <label for="date">Date</label>
-                <input type="date" id="task-date" />
-                <label for="priority">Important</label>
-                <input type="checkbox" />
-                <button type="submit">Add</button>
-                <button type="button" id="close-task">Close</button>
-              </form>
-            </div>
           </div>
-        </div>
-
-        <div class="edit-task-modal modal">
-          <form action="" id="edit-task">
-            <button type="button" id="close-edit-task">
-              <i class="fa-solid fa-xmark"></i>
-            </button>
-            <label for="title">Title</label>
-            <input type="text" name="title" id="task-new-title" />
-            <label for="notes">Notes(optional)</label>
-            <input type="text" class="hidden" id="task-id" />
-            <input type="text" name="notes" id="task-notes" />
-            <label for="date">Date</label>
-            <input type="date" id="task-new-date" />
-            <label for="priority">Important</label>
-            <input type="checkbox" id="new-priority" />
-            <button type="submit">Add changes</button>
-          </form>
         </div>
       </main>
       <footer>
@@ -140,6 +108,41 @@
           <button class="add-edited-project" type="submit">Add changes</button>
           <button class="close-edit-form" type="button">Close</button>
         </div>
+      </form>
+    </div>
+
+    <!-- add new task -->
+    <div class="taskForm">
+      <form action="" id="formForTasks">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="task-title" />
+        <label for="notes">Notes(optional)</label>
+        <input type="text" name="notes" />
+        <label for="date">Date</label>
+        <input type="date" id="task-date" />
+        <label for="priority">Important</label>
+        <input type="checkbox" />
+        <button type="submit">Add</button>
+        <button type="button" id="close-task">Close</button>
+      </form>
+    </div>
+
+    <!-- form to edit tasks -->
+    <div class="edit-task-modal modal">
+      <form action="" id="edit-task">
+        <button type="button" id="close-edit-task">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <label for="title">Title</label>
+        <input type="text" name="title" id="task-new-title" />
+        <label for="notes">Notes(optional)</label>
+        <input type="text" class="hidden" id="task-id" />
+        <input type="text" name="notes" id="task-notes" />
+        <label for="date">Date</label>
+        <input type="date" id="task-new-date" />
+        <label for="priority">Important</label>
+        <input type="checkbox" id="new-priority" />
+        <button type="submit">Add changes</button>
       </form>
     </div>
   </body>

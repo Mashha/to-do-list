@@ -168,6 +168,7 @@ export function displayPage() {
 
   function openTaskModal() {
     const divTask = document.querySelector(".taskForm");
+    wrapper.classList.add("blur");
     divTask.classList.add("open-task-form");
   }
 
@@ -178,6 +179,7 @@ export function displayPage() {
 
   function closeTaskModal() {
     const divTask = document.querySelector(".taskForm");
+    wrapper.classList.remove("blur");
     divTask.classList.remove("open-task-form");
   }
 
@@ -291,7 +293,7 @@ export function displayPage() {
       taskId.value = singleTask.id;
       const taskPriority = document.querySelector("#new-priority");
       taskPriority.checked = singleTask.priority;
-      console.log(taskPriority);
+      wrapper.classList.add("blur");
     });
 
     //priority
@@ -336,6 +338,7 @@ export function displayPage() {
               taskDate,
               taskPriority
             );
+            wrapper.classList.remove("blur");
             displayAllTasks();
             listManager.save();
             closeEditForm();
@@ -352,6 +355,7 @@ export function displayPage() {
   function closeEditForm() {
     const editTaskForm = document.querySelector(".edit-task-modal");
     editTaskForm.classList.remove("open");
+    wrapper.classList.remove("blur");
   }
 
   //type part of the day
