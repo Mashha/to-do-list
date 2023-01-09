@@ -11,10 +11,13 @@ export function displayPage() {
   const btnToOpenForm = document.querySelector(".btn-open-modal");
   btnToOpenForm.addEventListener("click", openProjectForm);
 
+  const wrapper = document.querySelector(".wrapper");
+
   function openProjectForm() {
     const divModal = document.querySelector(".form-modal");
     // clean input before you open
     cleanInput();
+    wrapper.classList.add("blur");
     divModal.classList.add("open");
   }
 
@@ -53,6 +56,7 @@ export function displayPage() {
     const icon = document.createElement("span");
     icon.innerHTML = '<i class="fa-regular fa-folder"></i>';
     const projectName = document.createElement("span");
+    projectName.classList.add("project-name");
     projectName.textContent = project.name;
     listElement.id = project.id;
     const deleteLi = document.createElement("button");
@@ -60,7 +64,7 @@ export function displayPage() {
     deleteLi.innerHTML = '<i class="fa-regular fa-trash-can"></i>';
     const editLi = document.createElement("button");
     editLi.classList.add("edit-project");
-    editLi.textContent = "edit";
+    editLi.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
     if (project.name !== "general") {
       listElement.append(icon, projectName, editLi, deleteLi);
     } else {
@@ -77,6 +81,7 @@ export function displayPage() {
       divEditList.classList.add("open-form");
       const projectNameInput = document.querySelector(".edited-project-name");
       projectNameInput.value = project.name;
+      wrapper.classList.add("blur");
     });
 
     //remove project from the page
@@ -102,7 +107,7 @@ export function displayPage() {
         listManager.editAList(project, newName.value);
       }
     });
-
+    wrapper.classList.remove("blur");
     closeEditedForm();
     displayAllProjects();
   });
@@ -114,11 +119,12 @@ export function displayPage() {
   function closeEditedForm() {
     const divEditList = document.querySelector(".form-edit-project");
     divEditList.classList.remove("open-form");
+    wrapper.classList.remove("blur");
   }
 
   //clean input field
   function cleanInput() {
-    const inputField = document.querySelector(".project-name");
+    const inputField = document.querySelector(".project-name-input");
     inputField.value = "";
   }
 
@@ -128,6 +134,7 @@ export function displayPage() {
 
   function closeModalForm() {
     const divModalClose = document.querySelector(".form-modal");
+    wrapper.classList.remove("blur");
     divModalClose.classList.remove("open");
   }
 

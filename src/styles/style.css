@@ -16,12 +16,15 @@
 
 body {
   width: 100%;
+}
+
+.wrapper {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 4fr;
   font-family: "mukta", sans-serif;
   background-color: var(--bg-body);
   color: var(--font-color);
-  /* background-image: url("../images/Untitled\ design\(8\).png"); */
   background-size: cover;
   background-position: center;
   grid-template-areas:
@@ -32,7 +35,7 @@ body {
 header {
   grid-area: header;
   text-align: center;
-  background-color: #f8f0e8;
+  background-color: var(--bg-container);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,10 +43,12 @@ header {
 }
 
 .image-logo {
-  /* background-image: url("../images/logo.png"); */
-  background-size: cover;
   width: 40px;
   height: 40px;
+}
+
+.image-logo img {
+  width: 100%;
 }
 
 aside {
@@ -63,7 +68,7 @@ aside {
 }
 
 .message {
-  background-color: #f8f0e8;
+  background-color: var(--bg-container);
   display: flex;
   border-radius: 10px;
   flex-direction: column;
@@ -157,12 +162,12 @@ aside {
 }
 
 .project-container {
-  padding-left: 5px;
   flex: 1;
 }
 
 .project-container > div {
   transition: all 0.3s ease-in;
+  padding-left: 5px;
 }
 
 .project-container > div:hover {
@@ -204,7 +209,7 @@ main {
   width: 90%;
   margin: auto;
   min-height: 80vh;
-  background-color: #f8f0e8;
+  background-color: var(--bg-container);
   border-radius: 10px;
   position: relative;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -238,17 +243,6 @@ main {
 .title {
   position: relative;
   font-family: "Aclonica", sans-serif;
-}
-
-.title:after {
-  content: "";
-  position: absolute;
-  bottom: 6px;
-  left: 0;
-  width: 170px;
-  height: 15px;
-  background-color: #a7d9da;
-  z-index: -1;
 }
 
 .task-element {
@@ -320,6 +314,12 @@ main {
 
 .edit-project {
   cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+.project-name {
+  flex: 1;
 }
 
 .remove-li {
@@ -359,17 +359,73 @@ main {
 /* js */
 .form-modal {
   display: none;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  position: fixed;
+  top: 15%;
+  transform: scale(0);
 }
 .open {
-  display: block;
+  display: flex;
+  transform: scale(1);
+}
+
+.open form {
+  background-color: var(--underline-color);
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.buttons .add-project,
+.close-modal {
+  padding: 6px 19px;
+  border: none;
+  border-radius: 10px;
 }
 
 .form-edit-project {
   display: none;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  position: fixed;
+  top: 15%;
+  transform: scale(0);
 }
 
 .open-form {
-  display: block;
+  display: flex;
+  transform: scale(1);
+}
+
+#form-edit {
+  background-color: var(--underline-color);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+}
+
+.add-edited-project,
+.close-edit-form {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 10px;
 }
 
 .hidden {
@@ -398,4 +454,10 @@ main {
 
 .edit-task-modal.open {
   display: flex;
+}
+
+.blur {
+  filter: blur(2px);
+  pointer-events: none;
+  user-select: none;
 }
