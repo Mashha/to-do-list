@@ -5,8 +5,8 @@ export function toDoList(name, id = Date.now()) {
   const toDoArray = [];
 
   //add to do to array
-  const addTodo = (title, notes, date, priority, id) => {
-    toDoArray.push(Todo(title, notes, date, priority, id));
+  const addTodo = (title, notes, date, priority, done, id) => {
+    toDoArray.push(Todo(title, notes, date, priority, done, id));
   };
 
   function findTodo(id) {

@@ -22,6 +22,7 @@ export const listManager = (function () {
             tasksArray[j].notes,
             tasksArray[j].date,
             tasksArray[j].priority,
+            tasksArray[j].done,
             tasksArray[j].id
           );
         }

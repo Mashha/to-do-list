@@ -1,3 +1,4 @@
+import { list } from "postcss";
 import { listManager } from "./listManager";
 
 export function displayPage() {
@@ -13,8 +14,7 @@ export function displayPage() {
 
   const wrapper = document.querySelector(".wrapper");
 
-  function openProjectForm(e) {
-    console.log(e.target);
+  function openProjectForm() {
     const divModal = document.querySelector(".form-modal");
     // clean input before you open
     cleanInput();
@@ -39,11 +39,10 @@ export function displayPage() {
 
   function submitProject(e) {
     e.preventDefault();
-
-    if (e.target[0].value === "") {
+    if (e.target[1].value === "") {
       alert("add project name");
     } else {
-      let formField = e.target[0].value;
+      let formField = e.target[1].value;
       closeModalForm();
       listManager.addList(`${formField}`);
       displayAllProjects();
@@ -62,9 +61,11 @@ export function displayPage() {
     listElement.id = project.id;
     const deleteLi = document.createElement("button");
     deleteLi.classList.add("remove-li");
+    deleteLi.id = project.id;
     deleteLi.innerHTML = '<i class="fa-regular fa-trash-can"></i>';
     const editLi = document.createElement("button");
     editLi.classList.add("edit-project");
+    editLi.id = project.id;
     editLi.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
     if (project.name !== "general") {
       listElement.append(icon, projectName, editLi, deleteLi);
@@ -139,30 +140,34 @@ export function displayPage() {
     divModalClose.classList.remove("open");
   }
 
+  function clickOnProjects(e) {
+    if (e.target.classList.contains("project-name")) {
+      e.target.parentElement.setAttribute(
+        "data-selected-project",
+        e.target.textContent
+      );
+
+      const clickedProjectId = e.target.parentElement.id;
+      const findProjectWithId = listManager.getAList(
+        parseInt(clickedProjectId)
+      );
+      const addTitle = document.querySelector(".title-project");
+      addTitle.textContent = findProjectWithId.name;
+      const taskElements = document.querySelectorAll(".task-element");
+      taskElements.forEach((li) => {
+        li.remove();
+      });
+
+      findProjectWithId.toDoArray.forEach(function (todo) {
+        displaySingleTask(todo);
+      });
+    } else {
+      return;
+    }
+  }
   document
     .querySelector(".project-container")
     .addEventListener("click", clickOnProjects);
-  function clickOnProjects(e) {
-    e.target.parentElement.setAttribute(
-      "data-selected-project",
-      e.target.textContent
-    );
-
-    const clickedProjectId = e.target.parentElement.id;
-    const findProjectWithId = listManager.getAList(parseInt(clickedProjectId));
-
-    const addTitle = document.querySelector(".title-project");
-    addTitle.textContent = findProjectWithId.name;
-    const taskElements = document.querySelectorAll(".task-element");
-    taskElements.forEach((li) => {
-      li.remove();
-    });
-
-    findProjectWithId.toDoArray.forEach(function (todo) {
-      displaySingleTask(todo);
-    });
-  }
-
   // tasks
   //open task form
   document
@@ -192,18 +197,19 @@ export function displayPage() {
 
   function addTaskToArray(e) {
     e.preventDefault();
-    const title = e.target[0].value;
-    const notes = e.target[1].value;
-    const date = e.target[2].value;
-    const priority = e.target[3].checked;
+    const title = e.target[1].value;
+    const notes = e.target[2].value;
+    const date = e.target[3].value;
+    const priority = e.target[4].checked;
+    const done = e.target[5].checked;
 
     const clickedProject = document.querySelector("[data-selected-project]");
     if (clickedProject === null) {
-      listManager.storedLists[0].addTodo(title, notes, date, priority);
+      listManager.storedLists[0].addTodo(title, notes, date, priority, done);
       listManager.save();
     } else {
       const findProject = listManager.getAList(parseInt(clickedProject.id));
-      findProject.addTodo(title, notes, date, priority);
+      findProject.addTodo(title, notes, date, priority, done);
       listManager.save();
     }
     closeTaskModal();
@@ -301,7 +307,6 @@ export function displayPage() {
 
     //priority
     importance.addEventListener("click", function () {
-      console.log(singleTask.priority);
       if (singleTask.priority === true) {
         singleTask.priority = false;
       } else {
@@ -311,13 +316,21 @@ export function displayPage() {
     });
 
     //check if done
-    taskCheck.addEventListener("change", function () {
-      if (taskCheck.checked === true) {
-        taskName.style.textDecoration = "line-through";
-      } else {
-        taskName.style.textDecoration = "none";
-      }
-    });
+    // taskCheck.addEventListener("change", function () {
+    //   if (taskCheck.checked === true) {
+    //     singleTask.done = true;
+    //   } else {
+    //     singleTask.done = false;
+    //   }
+    //   displayAllTasks();
+    // });
+    // if (singleTask.done === true) {
+    //   taskCheck.checked = true;
+    //   taskName.style.textDecoration = "line-through";
+    // } else {
+    //   taskCheck.checked = false;
+    //   taskName.style.textDecoration = "none";
+    // }
   }
 
   //add task changes to array
