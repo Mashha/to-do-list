@@ -41,6 +41,7 @@ header {
   justify-content: center;
   align-items: center;
   gap: 10px;
+  padding: 2px 0;
 }
 
 .title {
@@ -229,12 +230,16 @@ aside {
 
 .btn-open-modal {
   display: flex;
-  gap: 10px;
   justify-content: center;
-  align-items: center;
-  cursor: pointer;
   border: none;
   font-size: 18px;
+}
+
+.btn-open-modal span {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
 }
 
 main {
@@ -292,6 +297,11 @@ main {
   border-radius: 10px;
   cursor: pointer;
   gap: 10px;
+  transition: all 0.3s ease-in;
+}
+
+.task-element:hover {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .task-details {
@@ -306,12 +316,16 @@ main {
 }
 
 .add-task {
-  cursor: pointer;
   justify-content: center;
   display: flex;
-  gap: 10px;
-  align-items: center;
   font-size: 20px;
+}
+
+.add-task span {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 footer {

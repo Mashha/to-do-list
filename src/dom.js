@@ -8,12 +8,13 @@ export function displayPage() {
   };
 
   //open modal
-  const btnToOpenForm = document.querySelector(".btn-open-modal");
+  const btnToOpenForm = document.querySelector(".btn-open-modal span");
   btnToOpenForm.addEventListener("click", openProjectForm);
 
   const wrapper = document.querySelector(".wrapper");
 
-  function openProjectForm() {
+  function openProjectForm(e) {
+    console.log(e.target);
     const divModal = document.querySelector(".form-modal");
     // clean input before you open
     cleanInput();
@@ -164,7 +165,9 @@ export function displayPage() {
 
   // tasks
   //open task form
-  document.querySelector(".add-task").addEventListener("click", openTaskModal);
+  document
+    .querySelector(".add-task span")
+    .addEventListener("click", openTaskModal);
 
   function openTaskModal() {
     const divTask = document.querySelector(".taskForm");
