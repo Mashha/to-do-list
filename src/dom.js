@@ -316,21 +316,26 @@ export function displayPage() {
     });
 
     //check if done
-    // taskCheck.addEventListener("change", function () {
-    //   if (taskCheck.checked === true) {
-    //     singleTask.done = true;
-    //   } else {
-    //     singleTask.done = false;
-    //   }
-    //   displayAllTasks();
-    // });
-    // if (singleTask.done === true) {
-    //   taskCheck.checked = true;
-    //   taskName.style.textDecoration = "line-through";
-    // } else {
-    //   taskCheck.checked = false;
-    //   taskName.style.textDecoration = "none";
-    // }
+    if (singleTask.done === true) {
+      taskCheck.checked = true;
+      taskName.style.textDecoration = "line-through";
+    } else {
+      taskCheck.checked = false;
+      taskName.style.textDecoration = "none";
+    }
+
+    taskCheck.addEventListener("change", function () {
+      if (taskCheck.checked === true) {
+        singleTask.done = true;
+        taskName.style.textDecoration = "line-through";
+        listManager.save();
+      } else {
+        singleTask.done = false;
+        taskName.style.textDecoration = "none";
+        listManager.save();
+      }
+      displayAllTasks();
+    });
   }
 
   //add task changes to array
