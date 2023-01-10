@@ -245,9 +245,9 @@ export function displayPage() {
     importance.classList.add("task-important");
     importance.innerHTML = '<i class="fa-regular fa-star"></i>';
     if (singleTask.priority === true) {
-      importance.style.color = "orange";
+      importance.style.color = "#b46e53";
     } else {
-      importance.style.color = "black";
+      importance.style.color = "#605a56";
     }
 
     const dueDate = document.createElement("div");

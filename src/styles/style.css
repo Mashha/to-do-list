@@ -216,6 +216,7 @@ aside {
   cursor: pointer;
   border: none;
   background: transparent;
+  color: var(--font-color);
 }
 
 .project-name {
@@ -226,6 +227,7 @@ aside {
   cursor: pointer;
   border: none;
   background: transparent;
+  color: var(--font-color);
 }
 
 .btn-open-modal {
@@ -240,6 +242,11 @@ aside {
   gap: 10px;
   align-items: center;
   cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+
+.btn-open-modal span:hover {
+  color: var(--underline-color);
 }
 
 main {
@@ -313,6 +320,7 @@ main {
   border: none;
   background: transparent;
   cursor: pointer;
+  color: var(--font-color);
 }
 
 .add-task {
@@ -326,6 +334,11 @@ main {
   display: flex;
   align-items: center;
   gap: 10px;
+  transition: all 0.3s ease-in;
+}
+
+.add-task span:hover {
+  color: var(--underline-color);
 }
 
 footer {
