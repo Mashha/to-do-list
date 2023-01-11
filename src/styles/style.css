@@ -581,3 +581,8 @@ footer a {
 .task-notes {
   display: none;
 }
+
+.active {
+  background-color: #d7cfc3;
+}
+

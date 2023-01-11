@@ -1,5 +1,8 @@
-import { list } from "postcss";
 import { listManager } from "./listManager";
+import add from "date-fns/add";
+import isBefore from "date-fns/isBefore";
+import { parseISO } from "date-fns";
+import isAfter from "date-fns/isAfter";
 
 export function displayPage() {
   //loop over and display projects and tasks when page loads
@@ -91,6 +94,7 @@ export function displayPage() {
       const getAListWithID = listManager.getAList(project.id);
       const findIndex = listManager.storedLists.indexOf(getAListWithID);
       listManager.removeList(findIndex);
+
       displayAllProjects();
       todaysTasks();
     });
@@ -142,12 +146,14 @@ export function displayPage() {
 
   function clickOnProjects(e) {
     removeAttribute();
+    removeActive();
     if (e.target.classList.contains("project-name")) {
       e.target.parentElement.setAttribute(
         "data-selected-project",
         e.target.textContent
       );
-
+      const clickedProjectStyle = e.target.parentElement;
+      clickedProjectStyle.classList.add("active");
       const clickedProjectId = e.target.parentElement.id;
       const findProjectWithId = listManager.getAList(
         parseInt(clickedProjectId)
@@ -462,10 +468,6 @@ export function displayPage() {
     removeLi();
     const projectName = document.querySelector(".title-project");
     projectName.textContent = "Today";
-    const taskElements = document.querySelectorAll(".task-element");
-    taskElements.forEach((li) => {
-      li.remove();
-    });
     listManager.storedLists.forEach(function (project) {
       project.toDoArray.forEach(function (task) {
         if (currentDate === task.date) {
@@ -491,8 +493,30 @@ export function displayPage() {
 
   // display tasks of this coming week
   const tasksOfTheWeek = document.querySelector("#tasks-of-this-week");
+  const weekFromToday = add(new Date(2023, 0, 11, 15, 57, 50), {
+    years: 0,
+    months: 0,
+    weeks: 0,
+    days: 6,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
   tasksOfTheWeek.addEventListener("click", function () {
-    console.log("click");
+    removeLi();
+    const projectName = document.querySelector(".title-project");
+    projectName.textContent = "Week";
+    listManager.storedLists.forEach(function (project) {
+      project.toDoArray.forEach(function (task) {
+        if (
+          isBefore(parseISO(task.date), weekFromToday) &&
+          isAfter(parseISO(task.date), today)
+        ) {
+          displaySingleTask(task);
+        }
+      });
+    });
   });
 
   //display tasks that are important
@@ -508,5 +532,17 @@ export function displayPage() {
         }
       });
     });
+  });
+
+  function removeActive() {
+    const activeEl = document.querySelectorAll(".active");
+    activeEl.forEach(function (el) {
+      el.classList.remove("active");
+    });
+  }
+  //add active on clicked home element
+  document.querySelector(".home-inner").addEventListener("click", function (e) {
+    removeActive();
+    e.target.classList.add("active");
   });
 }
