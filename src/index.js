@@ -17,7 +17,11 @@ if (screen.width <= 800) {
   document.querySelector(".important").addEventListener("click", removeAside);
 
   const projects = document.querySelector(".project-container");
-  projects.addEventListener("click", removeAside);
+  projects.addEventListener("click", function (e) {
+    if (e.target.classList.contains("project-name")) {
+      removeAside();
+    }
+  });
 
   function removeAside() {
     aside.classList.remove("slide-in");
