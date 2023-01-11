@@ -230,7 +230,7 @@ export function displayPage() {
 
     const clickedProject = document.querySelector("[data-selected-project]");
 
-    if (clickedProject.textContent === "general") {
+    if (clickedProject === null) {
       listManager.storedLists[0].addTodo(title, notes, date, priority, done);
       listManager.save();
     } else {
@@ -429,20 +429,20 @@ export function displayPage() {
     "Friday",
     "Saturday",
   ];
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+  // const months = [
+  //   "January",
+  //   "February",
+  //   "March",
+  //   "April",
+  //   "May",
+  //   "June",
+  //   "July",
+  //   "August",
+  //   "September",
+  //   "October",
+  //   "November",
+  //   "December",
+  // ];
   const wordDay = days[new Date().getDay()];
   const numberDay = today.getDate();
   //const month = months[new Date().getMonth()];

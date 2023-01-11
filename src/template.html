@@ -13,6 +13,11 @@
   <body>
     <div class="wrapper">
       <header id="header">
+        <nav class="mobile-nav">
+         <div class="line1"></div>
+         <div class="line2"></div>
+         <div class="line3"></div>
+        </nav>
         <h1 class="title">To do list</h1>
         <div class="image-logo">
           <img src="./images/logo.png" alt="" />
@@ -105,7 +110,7 @@
           <i class="fa-solid fa-xmark"></i>
         </button>
         <label for="new-name">Add new name</label>
-        <input type="text" class="edited-project-name" name="new-name" />
+        <input type="text" class="edited-project-name" name="new-name" autocomplete="off"/>
         <input type="text" class="hidden" id="list-id" />
         <button class="add-edited-project" type="submit">Add changes</button>
       </form>
@@ -118,9 +123,9 @@
           <i class="fa-solid fa-xmark"></i>
         </button>
         <label for="title">Title</label>
-        <input type="text" name="title" id="task-title" required/>
+        <input type="text" name="title" id="task-title" autocomplete="off" required/>
         <label for="notes">Notes(optional)</label>
-        <input type="text" name="notes" id="notes"/>
+        <input type="text" name="notes" id="notes" autocomplete="off"/>
         <label for="date">Date</label>
         <input type="date" id="task-date" />
         <label for="priority">Important <input type="checkbox" /></label>
