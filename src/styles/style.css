@@ -577,3 +577,7 @@ footer a {
 .hidden {
   display: none;
 }
+
+.task-notes {
+  display: none;
+}

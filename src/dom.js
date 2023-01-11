@@ -141,6 +141,7 @@ export function displayPage() {
   }
 
   function clickOnProjects(e) {
+    removeAttribute();
     if (e.target.classList.contains("project-name")) {
       e.target.parentElement.setAttribute(
         "data-selected-project",
@@ -168,6 +169,14 @@ export function displayPage() {
   document
     .querySelector(".project-container")
     .addEventListener("click", clickOnProjects);
+
+  function removeAttribute() {
+    const attribute = document.querySelectorAll("[data-selected-project]");
+    attribute.forEach(function (project) {
+      project.removeAttribute("data-selected-project");
+    });
+  }
+
   // tasks
   //open task form
   document
@@ -175,9 +184,19 @@ export function displayPage() {
     .addEventListener("click", openTaskModal);
 
   function openTaskModal() {
+    cleanTaskInput();
     const divTask = document.querySelector(".taskForm");
     wrapper.classList.add("blur");
     divTask.classList.add("open-task-form");
+  }
+
+  function cleanTaskInput() {
+    const title = document.querySelector("#task-title");
+    title.value = "";
+    const notes = document.querySelector("#notes");
+    notes.value = "";
+    const date = document.querySelector("#task-date");
+    date.value = "";
   }
 
   // close task form
@@ -204,7 +223,8 @@ export function displayPage() {
     const done = e.target[5].checked;
 
     const clickedProject = document.querySelector("[data-selected-project]");
-    if (clickedProject === null) {
+
+    if (clickedProject.textContent === "general") {
       listManager.storedLists[0].addTodo(title, notes, date, priority, done);
       listManager.save();
     } else {
@@ -246,6 +266,7 @@ export function displayPage() {
     const taskName = document.createElement("div");
     taskName.textContent = singleTask.title;
     const taskNotes = document.createElement("div");
+    taskNotes.classList.add("task-notes");
     taskNotes.textContent = singleTask.notes;
     const importance = document.createElement("span");
     importance.classList.add("task-important");
