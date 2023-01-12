@@ -4,7 +4,6 @@ import { storedItems } from "./storage";
 // manage lists
 export const listManager = (function () {
   const storedLists = recreateStoredList() || [];
-  console.log(storedLists);
   function recreateStoredList() {
     const parsedJson = storedItems.getItem("storedLists") || [];
     if (parsedJson.length === 0) {
