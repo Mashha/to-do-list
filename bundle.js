@@ -2051,7 +2051,6 @@ __webpack_require__.r(__webpack_exports__);
 // manage lists
 const listManager = (function () {
   const storedLists = recreateStoredList() || [];
-  console.log(storedLists);
   function recreateStoredList() {
     const parsedJson = _storage__WEBPACK_IMPORTED_MODULE_1__.storedItems.getItem("storedLists") || [];
     if (parsedJson.length === 0) {
@@ -2230,7 +2229,7 @@ function Todo(title, notes, date, priority, done, id = Date.now()) {
   \************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "70b92372a7835a7bec80.png";
+module.exports = __webpack_require__.p + "f22d33317420c89d1b6a.png";
 
 /***/ })
 
