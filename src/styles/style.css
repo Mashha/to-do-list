@@ -596,16 +596,18 @@ footer a {
   cursor: pointer;
 }
 
-.mobile-nav > div {
-  width: 25px;
-  height: 3px;
-  margin: 5px;
-  background-color: #b46e53;
+#nav-open i, #nav-closed i {
+  font-size: 22px;
+  color: #b46e53;
 }
 
 @media (max-width: 800px) {
   .mobile-nav {
     display: block;
+  }
+
+  .hide-icon {
+    display: none;
   }
   .wrapper {
     grid-template-columns: 1fr 1fr;

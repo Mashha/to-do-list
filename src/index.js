@@ -5,9 +5,13 @@ displayPage();
 //slide in nav bar
 const mobileNav = document.querySelector(".mobile-nav");
 const aside = document.querySelector("aside");
+const navIcons = document.querySelectorAll(".icon")
 
 mobileNav.addEventListener("click", function () {
   aside.classList.toggle("slide-in");
+  navIcons.forEach(icon => {
+    icon.classList.toggle("hide-icon")
+  })
 });
 
 if (screen.width <= 800) {
