@@ -231,11 +231,18 @@ export function displayPage() {
     const clickedProject = document.querySelector("[data-selected-project]");
 
     if (clickedProject === null) {
-      listManager.storedLists[0].addTodo(title, notes, date, priority, done);
+      listManager.storedLists[0].addTodo(
+        title,
+        notes,
+        date,
+        priority,
+        done,
+        "general"
+      );
       listManager.save();
     } else {
       const findProject = listManager.getAList(parseInt(clickedProject.id));
-      findProject.addTodo(title, notes, date, priority, done);
+      findProject.addTodo(title, notes, date, priority, done, findProject.name);
       listManager.save();
     }
     closeTaskModal();
@@ -244,19 +251,26 @@ export function displayPage() {
 
   // loop over the array
   function displayAllTasks() {
-    const taskElements = document.querySelectorAll(".task-element");
-    taskElements.forEach((li) => {
-      li.remove();
-    });
+    removeLi();
 
     const projectName = document.querySelector(".title-project");
-    listManager.storedLists.forEach(function (project) {
-      if (projectName.textContent === project.name) {
-        project.toDoArray.forEach(function (task) {
-          displaySingleTask(task);
-        });
-      }
-    });
+    if (projectName.textContent === "Today") {
+      todaysTasks();
+    } else if (projectName.textContent === "Week") {
+      tasksOfTheWeek();
+    } else if (projectName.textContent === "All tasks") {
+      allTasks();
+    } else if (projectName.textContent === "Important") {
+      renderImportantTasks();
+    } else {
+      listManager.storedLists.forEach(function (project) {
+        if (projectName.textContent === project.name) {
+          project.toDoArray.forEach(function (task) {
+            displaySingleTask(task);
+          });
+        }
+      });
+    }
   }
 
   //display tasks
@@ -296,15 +310,16 @@ export function displayPage() {
     removeTask.id = singleTask.id;
     removeTask.innerHTML = '<i class="fa-regular fa-trash-can"></i>';
 
-    taskDetails.append(taskName, taskNotes);
+    taskElement.setAttribute("data-selected-task", singleTask.project);
     taskElement.append(taskCheck, taskDetails, dueDate, importance, removeTask);
+    taskDetails.append(taskName, taskNotes);
     tasksUl.append(taskElement);
 
     // remove tasks
     removeTask.addEventListener("click", function () {
-      const titleProject = document.querySelector(".title-project");
+      //const titleProject = document.querySelector(".title-project");
       listManager.storedLists.forEach(function (project) {
-        if (project.name === titleProject.textContent) {
+        if (project.name === singleTask.project) {
           const task = project.findTodo(parseInt(removeTask.id));
           //find the index of that task, to remove the right one
           const findTaskIndex = project.toDoArray.indexOf(task);
@@ -461,9 +476,6 @@ export function displayPage() {
   }
 
   //display today's tasks
-  document
-    .querySelector("#tasks-for-today")
-    .addEventListener("click", todaysTasks);
   function todaysTasks() {
     removeLi();
     const projectName = document.querySelector(".title-project");
@@ -476,10 +488,12 @@ export function displayPage() {
       });
     });
   }
+  document
+    .querySelector("#tasks-for-today")
+    .addEventListener("click", todaysTasks);
 
   //display all tasks
-  const allTasks = document.querySelector("#list-of-all-tasks");
-  allTasks.addEventListener("click", function () {
+  function allTasks() {
     removeLi();
     const projectName = document.querySelector(".title-project");
     projectName.textContent = "All tasks";
@@ -489,10 +503,12 @@ export function displayPage() {
         displaySingleTask(task);
       });
     });
-  });
+  }
+  document
+    .querySelector("#list-of-all-tasks")
+    .addEventListener("click", allTasks);
 
   // display tasks of this coming week
-  const tasksOfTheWeek = document.querySelector("#tasks-of-this-week");
   const weekFromToday = add(new Date(2023, 0, 11, 15, 57, 50), {
     years: 0,
     months: 0,
@@ -503,7 +519,7 @@ export function displayPage() {
     seconds: 0,
   });
 
-  tasksOfTheWeek.addEventListener("click", function () {
+  function tasksOfTheWeek() {
     removeLi();
     const projectName = document.querySelector(".title-project");
     projectName.textContent = "Week";
@@ -517,11 +533,13 @@ export function displayPage() {
         }
       });
     });
-  });
+  }
+  document
+    .querySelector("#tasks-of-this-week")
+    .addEventListener("click", tasksOfTheWeek);
 
   //display tasks that are important
-  const importantTasks = document.querySelector("#list-of-important-tasks");
-  importantTasks.addEventListener("click", function () {
+  function renderImportantTasks() {
     removeLi();
     const projectName = document.querySelector(".title-project");
     projectName.textContent = "Important";
@@ -532,7 +550,10 @@ export function displayPage() {
         }
       });
     });
-  });
+  }
+  document
+    .querySelector("#list-of-important-tasks")
+    .addEventListener("click", renderImportantTasks);
 
   function removeActive() {
     const activeEl = document.querySelectorAll(".active");

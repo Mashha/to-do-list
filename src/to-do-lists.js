@@ -5,16 +5,19 @@ export function toDoList(name, id = Date.now()) {
   const toDoArray = [];
 
   //add to do to array
-  const addTodo = (title, notes, date, priority, done, id) => {
-    toDoArray.push(Todo(title, notes, date, priority, done, id));
+  const addTodo = (title, notes, date, priority, done, project, id) => {
+    toDoArray.push(Todo(title, notes, date, priority, done, project, id));
   };
 
   function findTodo(id) {
-  return toDoArray.find((task)=> task.id === id)
+    return toDoArray.find((task) => task.id === id);
   }
 
-  function editTodo(object, newTitle, newNotes, newDate, newPriority){
-    object.title = newTitle, object.notes = newNotes, object.date = newDate, object.priority = newPriority
+  function editTodo(object, newTitle, newNotes, newDate, newPriority) {
+    (object.title = newTitle),
+      (object.notes = newNotes),
+      (object.date = newDate),
+      (object.priority = newPriority);
   }
 
   function removeTodo(todo) {
