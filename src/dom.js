@@ -160,6 +160,8 @@ export function displayPage() {
       );
       const addTitle = document.querySelector(".title-project");
       addTitle.textContent = findProjectWithId.name;
+      const button = document.querySelector(".add-task");
+      button.style.display = "flex";
       const taskElements = document.querySelectorAll(".task-element");
       taskElements.forEach((li) => {
         li.remove();
@@ -480,6 +482,7 @@ export function displayPage() {
     removeLi();
     const projectName = document.querySelector(".title-project");
     projectName.textContent = "Today";
+    removeButton()
     listManager.storedLists.forEach(function (project) {
       project.toDoArray.forEach(function (task) {
         if (currentDate === task.date) {
@@ -497,7 +500,7 @@ export function displayPage() {
     removeLi();
     const projectName = document.querySelector(".title-project");
     projectName.textContent = "All tasks";
-
+    removeButton()
     listManager.storedLists.forEach(function (project) {
       project.toDoArray.forEach(function (task) {
         displaySingleTask(task);
@@ -523,6 +526,7 @@ export function displayPage() {
     removeLi();
     const projectName = document.querySelector(".title-project");
     projectName.textContent = "Week";
+    removeButton()
     listManager.storedLists.forEach(function (project) {
       project.toDoArray.forEach(function (task) {
         if (
@@ -543,6 +547,7 @@ export function displayPage() {
     removeLi();
     const projectName = document.querySelector(".title-project");
     projectName.textContent = "Important";
+    removeButton()
     listManager.storedLists.forEach(function (project) {
       project.toDoArray.forEach(function (task) {
         if (task.priority === true) {
@@ -566,4 +571,10 @@ export function displayPage() {
     removeActive();
     e.target.classList.add("active");
   });
+
+  //remove option of adding a task
+  function removeButton() {
+    const button = document.querySelector(".add-task");
+    button.style.display = "none";
+  }
 }
