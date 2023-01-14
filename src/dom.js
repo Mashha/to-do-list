@@ -385,31 +385,36 @@ export function displayPage() {
   //add task changes to array
   document.querySelector("#edit-task").addEventListener("submit", function (e) {
     e.preventDefault();
+
     const taskTitle = document.querySelector("#task-new-title").value;
     const taskNotes = document.querySelector("#task-notes").value;
     const taskDate = document.querySelector("#task-new-date").value;
     const taskPriority = document.querySelector("#new-priority").checked;
 
     const taskId = document.querySelector("#task-id");
-    const titleProject = document.querySelector(".title-project");
+    const taskEl = document.querySelectorAll("[data-selected-task]");
+
     listManager.storedLists.forEach(function (project) {
-      if (project.name === titleProject.textContent) {
-        project.toDoArray.forEach(function (task) {
-          if (task.id === parseInt(taskId.value)) {
-            project.editTodo(
-              task,
-              taskTitle,
-              taskNotes,
-              taskDate,
-              taskPriority
-            );
-            wrapper.classList.remove("blur");
-            displayAllTasks();
-            listManager.save();
-            closeEditForm();
-          }
-        });
-      }
+      taskEl.forEach(function (item) {
+        const projectName = item.attributes[2].nodeValue;
+        if (project.name === projectName) {
+          project.toDoArray.forEach(function (task) {
+            if (task.id === parseInt(taskId.value)) {
+              project.editTodo(
+                task,
+                taskTitle,
+                taskNotes,
+                taskDate,
+                taskPriority
+              );
+              wrapper.classList.remove("blur");
+              displayAllTasks();
+              listManager.save();
+              closeEditForm();
+            }
+          });
+        }
+      });
     });
   });
 
@@ -482,7 +487,7 @@ export function displayPage() {
     removeLi();
     const projectName = document.querySelector(".title-project");
     projectName.textContent = "Today";
-    removeButton()
+    removeButton();
     listManager.storedLists.forEach(function (project) {
       project.toDoArray.forEach(function (task) {
         if (currentDate === task.date) {
@@ -500,7 +505,7 @@ export function displayPage() {
     removeLi();
     const projectName = document.querySelector(".title-project");
     projectName.textContent = "All tasks";
-    removeButton()
+    removeButton();
     listManager.storedLists.forEach(function (project) {
       project.toDoArray.forEach(function (task) {
         displaySingleTask(task);
@@ -526,7 +531,7 @@ export function displayPage() {
     removeLi();
     const projectName = document.querySelector(".title-project");
     projectName.textContent = "Week";
-    removeButton()
+    removeButton();
     listManager.storedLists.forEach(function (project) {
       project.toDoArray.forEach(function (task) {
         if (
@@ -547,7 +552,7 @@ export function displayPage() {
     removeLi();
     const projectName = document.querySelector(".title-project");
     projectName.textContent = "Important";
-    removeButton()
+    removeButton();
     listManager.storedLists.forEach(function (project) {
       project.toDoArray.forEach(function (task) {
         if (task.priority === true) {
