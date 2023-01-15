@@ -1488,27 +1488,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function displayPage() {
-  //loop over and display projects and tasks when page loads
   window.onload = function () {
     displayAllProjects();
     displayAllTasks();
   };
 
-  //open modal
-  const btnToOpenForm = document.querySelector(".btn-open-modal span");
-  btnToOpenForm.addEventListener("click", openProjectForm);
-
-  const wrapper = document.querySelector(".wrapper");
-
   function openProjectForm() {
     const divModal = document.querySelector(".form-modal");
-    // clean input before you open
     cleanInput();
     wrapper.classList.add("blur");
     divModal.classList.add("open");
   }
 
-  //loop over the array
   function displayAllProjects() {
     const projectItems = document.querySelectorAll(".list-item");
     projectItems.forEach((item) => {
@@ -1520,10 +1511,7 @@ function displayPage() {
     }
   }
 
-  //add project to array
-  document.querySelector("#form").addEventListener("submit", submitProject);
-
-  function submitProject(e) {
+  function addProjectToArray(e) {
     e.preventDefault();
     if (e.target[1].value === "") {
       alert("add project name");
@@ -1583,9 +1571,7 @@ function displayPage() {
     });
   }
 
-  //add changes to array
-  const formEdit = document.querySelector("#form-edit");
-  formEdit.addEventListener("submit", function (e) {
+  function addChangesToArray(e) {
     e.preventDefault();
     const newName = document.querySelector(".edited-project-name");
     const editButtonId = document.querySelector("#list-id");
@@ -1599,27 +1585,18 @@ function displayPage() {
     wrapper.classList.remove("blur");
     closeEditedForm();
     displayAllProjects();
-  });
+  }
 
-  //close edited form
-  document
-    .querySelector(".close-edit-form")
-    .addEventListener("click", closeEditedForm);
   function closeEditedForm() {
     const divEditList = document.querySelector(".form-edit-project");
     divEditList.classList.remove("open-form");
     wrapper.classList.remove("blur");
   }
 
-  //clean input field
   function cleanInput() {
     const inputField = document.querySelector(".project-name-input");
     inputField.value = "";
   }
-
-  //close modal form
-  const closeModal = document.querySelector(".close-modal");
-  closeModal.addEventListener("click", closeModalForm);
 
   function closeModalForm() {
     const divModalClose = document.querySelector(".form-modal");
@@ -1643,6 +1620,8 @@ function displayPage() {
       );
       const addTitle = document.querySelector(".title-project");
       addTitle.textContent = findProjectWithId.name;
+      const button = document.querySelector(".add-task");
+      button.style.display = "flex";
       const taskElements = document.querySelectorAll(".task-element");
       taskElements.forEach((li) => {
         li.remove();
@@ -1655,9 +1634,6 @@ function displayPage() {
       return;
     }
   }
-  document
-    .querySelector(".project-container")
-    .addEventListener("click", clickOnProjects);
 
   function removeAttribute() {
     const attribute = document.querySelectorAll("[data-selected-project]");
@@ -1666,12 +1642,26 @@ function displayPage() {
     });
   }
 
-  // tasks
-  //open task form
+  // ------------------------------------------------
+  const wrapper = document.querySelector(".wrapper");
   document
-    .querySelector(".add-task span")
-    .addEventListener("click", openTaskModal);
+    .querySelector(".btn-open-modal span")
+    .addEventListener("click", openProjectForm);
+  document.querySelector("#form").addEventListener("submit", addProjectToArray);
+  document
+    .querySelector("#form-edit")
+    .addEventListener("submit", addChangesToArray);
+  document
+    .querySelector(".close-edit-form")
+    .addEventListener("click", closeEditedForm);
+  document
+    .querySelector(".close-modal")
+    .addEventListener("click", closeModalForm);
+  document
+    .querySelector(".project-container")
+    .addEventListener("click", clickOnProjects);
 
+  // tasks
   function openTaskModal() {
     cleanTaskInput();
     const divTask = document.querySelector(".taskForm");
@@ -1688,20 +1678,11 @@ function displayPage() {
     date.value = "";
   }
 
-  // close task form
-  document
-    .querySelector("#close-task")
-    .addEventListener("click", closeTaskModal);
-
   function closeTaskModal() {
     const divTask = document.querySelector(".taskForm");
     wrapper.classList.remove("blur");
     divTask.classList.remove("open-task-form");
   }
-
-  document
-    .querySelector("#formForTasks")
-    .addEventListener("submit", addTaskToArray);
 
   function addTaskToArray(e) {
     e.preventDefault();
@@ -1714,32 +1695,45 @@ function displayPage() {
     const clickedProject = document.querySelector("[data-selected-project]");
 
     if (clickedProject === null) {
-      _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.storedLists[0].addTodo(title, notes, date, priority, done);
+      _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.storedLists[0].addTodo(
+        title,
+        notes,
+        date,
+        priority,
+        done,
+        "general"
+      );
       _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.save();
     } else {
       const findProject = _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.getAList(parseInt(clickedProject.id));
-      findProject.addTodo(title, notes, date, priority, done);
+      findProject.addTodo(title, notes, date, priority, done, findProject.name);
       _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.save();
     }
     closeTaskModal();
     displayAllTasks();
   }
 
-  // loop over the array
   function displayAllTasks() {
-    const taskElements = document.querySelectorAll(".task-element");
-    taskElements.forEach((li) => {
-      li.remove();
-    });
+    removeLi();
 
     const projectName = document.querySelector(".title-project");
-    _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.storedLists.forEach(function (project) {
-      if (projectName.textContent === project.name) {
-        project.toDoArray.forEach(function (task) {
-          displaySingleTask(task);
-        });
-      }
-    });
+    if (projectName.textContent === "Today") {
+      todaysTasks();
+    } else if (projectName.textContent === "Week") {
+      tasksOfTheWeek();
+    } else if (projectName.textContent === "All tasks") {
+      allTasks();
+    } else if (projectName.textContent === "Important") {
+      renderImportantTasks();
+    } else {
+      _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.storedLists.forEach(function (project) {
+        if (projectName.textContent === project.name) {
+          project.toDoArray.forEach(function (task) {
+            displaySingleTask(task);
+          });
+        }
+      });
+    }
   }
 
   //display tasks
@@ -1779,15 +1773,14 @@ function displayPage() {
     removeTask.id = singleTask.id;
     removeTask.innerHTML = '<i class="fa-regular fa-trash-can"></i>';
 
-    taskDetails.append(taskName, taskNotes);
+    taskElement.setAttribute("data-selected-task", singleTask.project);
     taskElement.append(taskCheck, taskDetails, dueDate, importance, removeTask);
+    taskDetails.append(taskName, taskNotes);
     tasksUl.append(taskElement);
 
-    // remove tasks
     removeTask.addEventListener("click", function () {
-      const titleProject = document.querySelector(".title-project");
       _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.storedLists.forEach(function (project) {
-        if (project.name === titleProject.textContent) {
+        if (project.name === singleTask.project) {
           const task = project.findTodo(parseInt(removeTask.id));
           //find the index of that task, to remove the right one
           const findTaskIndex = project.toDoArray.indexOf(task);
@@ -1825,7 +1818,6 @@ function displayPage() {
       displayAllTasks();
     });
 
-    //check if done
     if (singleTask.done === true) {
       taskCheck.checked = true;
       taskName.style.textDecoration = "line-through";
@@ -1848,48 +1840,48 @@ function displayPage() {
     });
   }
 
-  //add task changes to array
-  document.querySelector("#edit-task").addEventListener("submit", function (e) {
+  function addTaskChangesToArray(e) {
     e.preventDefault();
+
     const taskTitle = document.querySelector("#task-new-title").value;
     const taskNotes = document.querySelector("#task-notes").value;
     const taskDate = document.querySelector("#task-new-date").value;
     const taskPriority = document.querySelector("#new-priority").checked;
 
     const taskId = document.querySelector("#task-id");
-    const titleProject = document.querySelector(".title-project");
-    _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.storedLists.forEach(function (project) {
-      if (project.name === titleProject.textContent) {
-        project.toDoArray.forEach(function (task) {
-          if (task.id === parseInt(taskId.value)) {
-            project.editTodo(
-              task,
-              taskTitle,
-              taskNotes,
-              taskDate,
-              taskPriority
-            );
-            wrapper.classList.remove("blur");
-            displayAllTasks();
-            _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.save();
-            closeEditForm();
-          }
-        });
-      }
-    });
-  });
+    const taskEl = document.querySelectorAll("[data-selected-task]");
 
-  //close edit form
-  document
-    .querySelector("#close-edit-task")
-    .addEventListener("click", closeEditForm);
+    _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.storedLists.forEach(function (project) {
+      taskEl.forEach(function (item) {
+        const projectName = item.attributes[2].nodeValue;
+        if (project.name === projectName) {
+          project.toDoArray.forEach(function (task) {
+            if (task.id === parseInt(taskId.value)) {
+              project.editTodo(
+                task,
+                taskTitle,
+                taskNotes,
+                taskDate,
+                taskPriority
+              );
+              wrapper.classList.remove("blur");
+              displayAllTasks();
+              _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.save();
+              closeEditForm();
+            }
+          });
+        }
+      });
+    });
+  }
+
   function closeEditForm() {
     const editTaskForm = document.querySelector(".edit-task-modal");
     editTaskForm.classList.remove("open");
     wrapper.classList.remove("blur");
   }
 
-  //type part of the day
+  //part of the day
   const today = new Date();
   const hours = today.getHours();
   const message = document.querySelector(".day-message");
@@ -1935,7 +1927,7 @@ function displayPage() {
   numberOfToday.textContent = `${numberDay}`;
   //get date
   const currentDate = new Date().toJSON().slice(0, 10);
-  //remove list elements
+
   function removeLi() {
     const taskElements = document.querySelectorAll(".task-element");
     taskElements.forEach((li) => {
@@ -1943,14 +1935,11 @@ function displayPage() {
     });
   }
 
-  //display today's tasks
-  document
-    .querySelector("#tasks-for-today")
-    .addEventListener("click", todaysTasks);
   function todaysTasks() {
     removeLi();
     const projectName = document.querySelector(".title-project");
     projectName.textContent = "Today";
+    removeAddTaskButton();
     _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.storedLists.forEach(function (project) {
       project.toDoArray.forEach(function (task) {
         if (currentDate === task.date) {
@@ -1960,23 +1949,20 @@ function displayPage() {
     });
   }
 
-  //display all tasks
-  const allTasks = document.querySelector("#list-of-all-tasks");
-  allTasks.addEventListener("click", function () {
+  function allTasks() {
     removeLi();
     const projectName = document.querySelector(".title-project");
     projectName.textContent = "All tasks";
-
+    removeAddTaskButton();
     _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.storedLists.forEach(function (project) {
       project.toDoArray.forEach(function (task) {
         displaySingleTask(task);
       });
     });
-  });
+  }
 
   // display tasks of this coming week
-  const tasksOfTheWeek = document.querySelector("#tasks-of-this-week");
-  const weekFromToday = (0,date_fns_add__WEBPACK_IMPORTED_MODULE_1__["default"])(new Date(2023, 0, 11, 15, 57, 50), {
+  const weekFromToday = (0,date_fns_add__WEBPACK_IMPORTED_MODULE_1__["default"])(new Date(), {
     years: 0,
     months: 0,
     weeks: 0,
@@ -1986,10 +1972,11 @@ function displayPage() {
     seconds: 0,
   });
 
-  tasksOfTheWeek.addEventListener("click", function () {
+  function tasksOfTheWeek() {
     removeLi();
     const projectName = document.querySelector(".title-project");
     projectName.textContent = "Week";
+    removeAddTaskButton();
     _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.storedLists.forEach(function (project) {
       project.toDoArray.forEach(function (task) {
         if (
@@ -2000,14 +1987,13 @@ function displayPage() {
         }
       });
     });
-  });
+  }
 
-  //display tasks that are important
-  const importantTasks = document.querySelector("#list-of-important-tasks");
-  importantTasks.addEventListener("click", function () {
+  function renderImportantTasks() {
     removeLi();
     const projectName = document.querySelector(".title-project");
     projectName.textContent = "Important";
+    removeAddTaskButton();
     _listManager__WEBPACK_IMPORTED_MODULE_0__.listManager.storedLists.forEach(function (project) {
       project.toDoArray.forEach(function (task) {
         if (task.priority === true) {
@@ -2015,7 +2001,7 @@ function displayPage() {
         }
       });
     });
-  });
+  }
 
   function removeActive() {
     const activeEl = document.querySelectorAll(".active");
@@ -2023,11 +2009,48 @@ function displayPage() {
       el.classList.remove("active");
     });
   }
-  //add active on clicked home element
-  document.querySelector(".home-inner").addEventListener("click", function (e) {
+
+  function addClassOnClick(e) {
     removeActive();
     e.target.classList.add("active");
-  });
+  }
+
+  function removeAddTaskButton() {
+    const button = document.querySelector(".add-task");
+    button.style.display = "none";
+  }
+
+  //---------------------------------------
+  document
+    .querySelector(".add-task span")
+    .addEventListener("click", openTaskModal);
+  document
+    .querySelector("#close-task")
+    .addEventListener("click", closeTaskModal);
+  document
+    .querySelector("#formForTasks")
+    .addEventListener("submit", addTaskToArray);
+  document
+    .querySelector("#edit-task")
+    .addEventListener("submit", addTaskChangesToArray);
+  document
+    .querySelector("#close-edit-task")
+    .addEventListener("click", closeEditForm);
+  document
+    .querySelector("#tasks-for-today")
+    .addEventListener("click", todaysTasks);
+  document
+    .querySelector("#list-of-all-tasks")
+    .addEventListener("click", allTasks);
+  document
+    .querySelector("#tasks-of-this-week")
+    .addEventListener("click", tasksOfTheWeek);
+  document
+    .querySelector("#list-of-important-tasks")
+    .addEventListener("click", renderImportantTasks);
+  document
+    .querySelector(".home-inner")
+    .addEventListener("click", addClassOnClick);
 }
 
 
@@ -2051,6 +2074,7 @@ __webpack_require__.r(__webpack_exports__);
 // manage lists
 const listManager = (function () {
   const storedLists = recreateStoredList() || [];
+  console.log(storedLists);
   function recreateStoredList() {
     const parsedJson = _storage__WEBPACK_IMPORTED_MODULE_1__.storedItems.getItem("storedLists") || [];
     if (parsedJson.length === 0) {
@@ -2069,6 +2093,7 @@ const listManager = (function () {
             tasksArray[j].date,
             tasksArray[j].priority,
             tasksArray[j].done,
+            tasksArray[j].project,
             tasksArray[j].id
           );
         }
@@ -2168,16 +2193,19 @@ function toDoList(name, id = Date.now()) {
   const toDoArray = [];
 
   //add to do to array
-  const addTodo = (title, notes, date, priority, done, id) => {
-    toDoArray.push((0,_to_do_js__WEBPACK_IMPORTED_MODULE_0__.Todo)(title, notes, date, priority, done, id));
+  const addTodo = (title, notes, date, priority, done, project, id) => {
+    toDoArray.push((0,_to_do_js__WEBPACK_IMPORTED_MODULE_0__.Todo)(title, notes, date, priority, done, project, id));
   };
 
   function findTodo(id) {
-  return toDoArray.find((task)=> task.id === id)
+    return toDoArray.find((task) => task.id === id);
   }
 
-  function editTodo(object, newTitle, newNotes, newDate, newPriority){
-    object.title = newTitle, object.notes = newNotes, object.date = newDate, object.priority = newPriority
+  function editTodo(object, newTitle, newNotes, newDate, newPriority) {
+    (object.title = newTitle),
+      (object.notes = newNotes),
+      (object.date = newDate),
+      (object.priority = newPriority);
   }
 
   function removeTodo(todo) {
@@ -2209,13 +2237,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Todo": () => (/* binding */ Todo)
 /* harmony export */ });
 // to do's
-function Todo(title, notes, date, priority, done, id = Date.now()) {
+function Todo(
+  title,
+  notes,
+  date,
+  priority,
+  done,
+  project,
+  id = Date.now()
+) {
   return {
     title,
     notes,
     date,
     priority,
     done,
+    project,
     id,
   };
 }
@@ -2380,7 +2417,7 @@ __webpack_require__.r(__webpack_exports__);
 
 (0,_dom_js__WEBPACK_IMPORTED_MODULE_1__.displayPage)();
 
-//slide in nav bar
+
 const mobileNav = document.querySelector(".mobile-nav");
 const aside = document.querySelector("aside");
 const navIcons = document.querySelectorAll(".icon")
