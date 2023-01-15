@@ -517,7 +517,7 @@ export function displayPage() {
     .addEventListener("click", allTasks);
 
   // display tasks of this coming week
-  const weekFromToday = add(new Date(2023, 0, 11, 15, 57, 50), {
+  const weekFromToday = add(new Date(), {
     years: 0,
     months: 0,
     weeks: 0,
