@@ -2,7 +2,7 @@ import "./styles/style.css";
 import { displayPage } from "./dom.js";
 displayPage();
 
-//slide in nav bar
+
 const mobileNav = document.querySelector(".mobile-nav");
 const aside = document.querySelector("aside");
 const navIcons = document.querySelectorAll(".icon")

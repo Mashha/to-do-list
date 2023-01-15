@@ -5,27 +5,18 @@ import { parseISO } from "date-fns";
 import isAfter from "date-fns/isAfter";
 
 export function displayPage() {
-  //loop over and display projects and tasks when page loads
   window.onload = function () {
     displayAllProjects();
     displayAllTasks();
   };
 
-  //open modal
-  const btnToOpenForm = document.querySelector(".btn-open-modal span");
-  btnToOpenForm.addEventListener("click", openProjectForm);
-
-  const wrapper = document.querySelector(".wrapper");
-
   function openProjectForm() {
     const divModal = document.querySelector(".form-modal");
-    // clean input before you open
     cleanInput();
     wrapper.classList.add("blur");
     divModal.classList.add("open");
   }
 
-  //loop over the array
   function displayAllProjects() {
     const projectItems = document.querySelectorAll(".list-item");
     projectItems.forEach((item) => {
@@ -37,10 +28,7 @@ export function displayPage() {
     }
   }
 
-  //add project to array
-  document.querySelector("#form").addEventListener("submit", submitProject);
-
-  function submitProject(e) {
+  function addProjectToArray(e) {
     e.preventDefault();
     if (e.target[1].value === "") {
       alert("add project name");
@@ -100,9 +88,7 @@ export function displayPage() {
     });
   }
 
-  //add changes to array
-  const formEdit = document.querySelector("#form-edit");
-  formEdit.addEventListener("submit", function (e) {
+  function addChangesToArray(e) {
     e.preventDefault();
     const newName = document.querySelector(".edited-project-name");
     const editButtonId = document.querySelector("#list-id");
@@ -116,27 +102,18 @@ export function displayPage() {
     wrapper.classList.remove("blur");
     closeEditedForm();
     displayAllProjects();
-  });
+  }
 
-  //close edited form
-  document
-    .querySelector(".close-edit-form")
-    .addEventListener("click", closeEditedForm);
   function closeEditedForm() {
     const divEditList = document.querySelector(".form-edit-project");
     divEditList.classList.remove("open-form");
     wrapper.classList.remove("blur");
   }
 
-  //clean input field
   function cleanInput() {
     const inputField = document.querySelector(".project-name-input");
     inputField.value = "";
   }
-
-  //close modal form
-  const closeModal = document.querySelector(".close-modal");
-  closeModal.addEventListener("click", closeModalForm);
 
   function closeModalForm() {
     const divModalClose = document.querySelector(".form-modal");
@@ -174,9 +151,6 @@ export function displayPage() {
       return;
     }
   }
-  document
-    .querySelector(".project-container")
-    .addEventListener("click", clickOnProjects);
 
   function removeAttribute() {
     const attribute = document.querySelectorAll("[data-selected-project]");
@@ -185,12 +159,26 @@ export function displayPage() {
     });
   }
 
-  // tasks
-  //open task form
+  // ------------------------------------------------
+  const wrapper = document.querySelector(".wrapper");
   document
-    .querySelector(".add-task span")
-    .addEventListener("click", openTaskModal);
+    .querySelector(".btn-open-modal span")
+    .addEventListener("click", openProjectForm);
+  document.querySelector("#form").addEventListener("submit", addProjectToArray);
+  document
+    .querySelector("#form-edit")
+    .addEventListener("submit", addChangesToArray);
+  document
+    .querySelector(".close-edit-form")
+    .addEventListener("click", closeEditedForm);
+  document
+    .querySelector(".close-modal")
+    .addEventListener("click", closeModalForm);
+  document
+    .querySelector(".project-container")
+    .addEventListener("click", clickOnProjects);
 
+  // tasks
   function openTaskModal() {
     cleanTaskInput();
     const divTask = document.querySelector(".taskForm");
@@ -207,20 +195,11 @@ export function displayPage() {
     date.value = "";
   }
 
-  // close task form
-  document
-    .querySelector("#close-task")
-    .addEventListener("click", closeTaskModal);
-
   function closeTaskModal() {
     const divTask = document.querySelector(".taskForm");
     wrapper.classList.remove("blur");
     divTask.classList.remove("open-task-form");
   }
-
-  document
-    .querySelector("#formForTasks")
-    .addEventListener("submit", addTaskToArray);
 
   function addTaskToArray(e) {
     e.preventDefault();
@@ -251,7 +230,6 @@ export function displayPage() {
     displayAllTasks();
   }
 
-  // loop over the array
   function displayAllTasks() {
     removeLi();
 
@@ -317,9 +295,7 @@ export function displayPage() {
     taskDetails.append(taskName, taskNotes);
     tasksUl.append(taskElement);
 
-    // remove tasks
     removeTask.addEventListener("click", function () {
-      //const titleProject = document.querySelector(".title-project");
       listManager.storedLists.forEach(function (project) {
         if (project.name === singleTask.project) {
           const task = project.findTodo(parseInt(removeTask.id));
@@ -359,7 +335,6 @@ export function displayPage() {
       displayAllTasks();
     });
 
-    //check if done
     if (singleTask.done === true) {
       taskCheck.checked = true;
       taskName.style.textDecoration = "line-through";
@@ -382,8 +357,7 @@ export function displayPage() {
     });
   }
 
-  //add task changes to array
-  document.querySelector("#edit-task").addEventListener("submit", function (e) {
+  function addTaskChangesToArray(e) {
     e.preventDefault();
 
     const taskTitle = document.querySelector("#task-new-title").value;
@@ -416,19 +390,15 @@ export function displayPage() {
         }
       });
     });
-  });
+  }
 
-  //close edit form
-  document
-    .querySelector("#close-edit-task")
-    .addEventListener("click", closeEditForm);
   function closeEditForm() {
     const editTaskForm = document.querySelector(".edit-task-modal");
     editTaskForm.classList.remove("open");
     wrapper.classList.remove("blur");
   }
 
-  //type part of the day
+  //part of the day
   const today = new Date();
   const hours = today.getHours();
   const message = document.querySelector(".day-message");
@@ -474,7 +444,7 @@ export function displayPage() {
   numberOfToday.textContent = `${numberDay}`;
   //get date
   const currentDate = new Date().toJSON().slice(0, 10);
-  //remove list elements
+
   function removeLi() {
     const taskElements = document.querySelectorAll(".task-element");
     taskElements.forEach((li) => {
@@ -482,12 +452,11 @@ export function displayPage() {
     });
   }
 
-  //display today's tasks
   function todaysTasks() {
     removeLi();
     const projectName = document.querySelector(".title-project");
     projectName.textContent = "Today";
-    removeButton();
+    removeAddTaskButton();
     listManager.storedLists.forEach(function (project) {
       project.toDoArray.forEach(function (task) {
         if (currentDate === task.date) {
@@ -496,25 +465,18 @@ export function displayPage() {
       });
     });
   }
-  document
-    .querySelector("#tasks-for-today")
-    .addEventListener("click", todaysTasks);
 
-  //display all tasks
   function allTasks() {
     removeLi();
     const projectName = document.querySelector(".title-project");
     projectName.textContent = "All tasks";
-    removeButton();
+    removeAddTaskButton();
     listManager.storedLists.forEach(function (project) {
       project.toDoArray.forEach(function (task) {
         displaySingleTask(task);
       });
     });
   }
-  document
-    .querySelector("#list-of-all-tasks")
-    .addEventListener("click", allTasks);
 
   // display tasks of this coming week
   const weekFromToday = add(new Date(), {
@@ -531,7 +493,7 @@ export function displayPage() {
     removeLi();
     const projectName = document.querySelector(".title-project");
     projectName.textContent = "Week";
-    removeButton();
+    removeAddTaskButton();
     listManager.storedLists.forEach(function (project) {
       project.toDoArray.forEach(function (task) {
         if (
@@ -543,16 +505,12 @@ export function displayPage() {
       });
     });
   }
-  document
-    .querySelector("#tasks-of-this-week")
-    .addEventListener("click", tasksOfTheWeek);
 
-  //display tasks that are important
   function renderImportantTasks() {
     removeLi();
     const projectName = document.querySelector(".title-project");
     projectName.textContent = "Important";
-    removeButton();
+    removeAddTaskButton();
     listManager.storedLists.forEach(function (project) {
       project.toDoArray.forEach(function (task) {
         if (task.priority === true) {
@@ -561,9 +519,6 @@ export function displayPage() {
       });
     });
   }
-  document
-    .querySelector("#list-of-important-tasks")
-    .addEventListener("click", renderImportantTasks);
 
   function removeActive() {
     const activeEl = document.querySelectorAll(".active");
@@ -571,15 +526,46 @@ export function displayPage() {
       el.classList.remove("active");
     });
   }
-  //add active on clicked home element
-  document.querySelector(".home-inner").addEventListener("click", function (e) {
+
+  function addClassOnClick(e) {
     removeActive();
     e.target.classList.add("active");
-  });
+  }
 
-  //remove option of adding a task
-  function removeButton() {
+  function removeAddTaskButton() {
     const button = document.querySelector(".add-task");
     button.style.display = "none";
   }
+
+  //---------------------------------------
+  document
+    .querySelector(".add-task span")
+    .addEventListener("click", openTaskModal);
+  document
+    .querySelector("#close-task")
+    .addEventListener("click", closeTaskModal);
+  document
+    .querySelector("#formForTasks")
+    .addEventListener("submit", addTaskToArray);
+  document
+    .querySelector("#edit-task")
+    .addEventListener("submit", addTaskChangesToArray);
+  document
+    .querySelector("#close-edit-task")
+    .addEventListener("click", closeEditForm);
+  document
+    .querySelector("#tasks-for-today")
+    .addEventListener("click", todaysTasks);
+  document
+    .querySelector("#list-of-all-tasks")
+    .addEventListener("click", allTasks);
+  document
+    .querySelector("#tasks-of-this-week")
+    .addEventListener("click", tasksOfTheWeek);
+  document
+    .querySelector("#list-of-important-tasks")
+    .addEventListener("click", renderImportantTasks);
+  document
+    .querySelector(".home-inner")
+    .addEventListener("click", addClassOnClick);
 }
