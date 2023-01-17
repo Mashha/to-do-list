@@ -33,10 +33,16 @@ export function displayPage() {
     if (e.target[1].value === "") {
       alert("add project name");
     } else {
-      let formField = e.target[1].value;
-      closeModalForm();
-      listManager.addList(`${formField}`);
-      displayAllProjects();
+      listManager.storedLists.forEach(function (projectName) {
+        if (projectName.name === e.target[1].value.toLowerCase()) {
+          alert("Name already exists, pick another one!");
+        } else {
+          let formField = e.target[1].value;
+          closeModalForm();
+          listManager.addList(`${formField}`);
+          displayAllProjects();
+        }
+      });
     }
   }
 
